@@ -1,0 +1,19 @@
+body, #wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+footer{
+  margin-top: auto;
+}
+
+/* トップページのmargin(naviに重ならないように) */
+.my-div-style{
+  margin-top:6rem;
+}
+
+header.masthead {
+background: linear-gradient(0deg, #09eeaf 0%, #1b00ff 100%);
+
+}

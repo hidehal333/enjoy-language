@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title%}
+{% trans "言語を楽しもう！世界の仲間と言語を学び・教えあおう。" %}
+{% endblock %}
+
+{% block header%}
+<header class="masthead  text-center text-white">
+  <div class="masthead-content">
+    <div class="container">
+      <h1 class="masthead-heading mb-0">{% trans "言語を楽しもう！" %}</h1>
+      <h2 class="masthead-subheading mb-0">{% trans "世界の仲間と学ぼう" %}。</h2>
+        {% if user.is_authenticated %}
+        {% else %}
+          <a href="{% url 'account_login' %}" class="btn btn-primary btn-xl rounded-pill mt-5">LOG IN</a>
+        {% endif %}
+    </div>
+  </div>
+  <!-- <div class="bg-circle-1 bg-circle"></div>
+  <div class="bg-circle-2 bg-circle"></div>
+  <div class="bg-circle-3 bg-circle"></div>
+  <div class="bg-circle-4 bg-circle"></div> -->
+</header>
+{% endblock %}
+
+{% block contents %}
+
+
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/01.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+            <h2 class="display-4">{% trans "みんなの日記" %}</h2>
+            <p>{% trans "仲間の投稿を見て言語を学ぼう" %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/02.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="p-5">
+            <h2 class="display-4">{% trans "Write Your Diary" %}</h2>
+            <p>{% trans "あなたの日記を投稿しよう" %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 order-lg-2">
+        <div class="p-5">
+          <img class="img-fluid rounded-circle" src="{% static 'img/03.jpg' %}" alt="">
+        </div>
+      </div>
+      <div class="col-lg-6 order-lg-1">
+        <div class="p-5">
+            <h2 class="display-4">{% trans "Find Friends" %}</h2>
+            <p>{% trans "ユーザー検索" %}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% load i18n %}
+
+{% if request.user.is_authenticated %}
+   <form action="{% url 'diary:translate' %}" method="POST" target="_blank" name="form1">
+     {% csrf_token %}
+     <!-- 元の言語 -->
+     <!-- 翻訳する言語 -->
+      <!-- 翻訳をする -->
+      <button type="submit"  id="translate_{{diary.id}}" name="diary_id" value="{{diary.id}}" class="btn btn-secondary translate">{% trans "日本語を英語に翻訳" %} </button>
+      {% else %}
+   </form>
+ {% endif %}

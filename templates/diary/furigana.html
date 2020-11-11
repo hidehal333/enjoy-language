@@ -1,0 +1,9 @@
+{% load i18n %}
+
+{% if request.user.is_authenticated %}
+   <form action="{% url 'diary:furigana' %}" method="POST" target="_blank" name="furigana">
+     {% csrf_token %}
+      <button type="submit"  id="furigana_{{diary.id}}" name="diary_id" value="{{diary.id}}" class="btn furigana">{% trans "ルビをふる" %} </button>
+      {% else %}
+   </form>
+ {% endif %}
