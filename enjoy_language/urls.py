@@ -13,8 +13,8 @@ urlpatterns = [
 
     #Local apps
     path('i18n/', include('django.conf.urls.i18n')),
-    # path('diary/', include('diary.urls')),
-    # path('comments/', include('comments.urls')),
-    # path('', include('pages.urls')),
+    path('diary/', include('diary.urls')),
+    path('comments/', include('comments.urls')),
+    path('', include('pages.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
