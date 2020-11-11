@@ -18,6 +18,9 @@ class Diary(models.Model):
 
     class Meta:
         verbose_name_plural = 'Diary'
+        indexes = [
+            models.Index(fields=['id'], name='id_index'),
+        ]
 
     def __str__(self):
         return self.title
