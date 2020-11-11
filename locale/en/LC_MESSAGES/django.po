@@ -1,0 +1,424 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-05 23:11+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: comments/models.py:10 diary/models.py:10
+msgid "ユーザー"
+msgstr "User"
+
+#: comments/models.py:11
+msgid "日記"
+msgstr "Diary"
+
+#: comments/models.py:12 templates/diary_detail.html:99
+#: templates/diary_list.html:88 templates/diary_list1.html:83
+#: templates/profile.html:134
+msgid "コメント"
+msgstr "Comment"
+
+#: comments/models.py:13 templates/diary_detail.html:56
+msgid "写真"
+msgstr "Photo"
+
+#: comments/models.py:14 diary/models.py:15 templates/diary_detail.html:79
+msgid "作成日時"
+msgstr "Created_at"
+
+#: diary/models.py:11 templates/diary_detail.html:45
+msgid "本文"
+msgstr "Content"
+
+#: diary/models.py:12
+msgid "写真1"
+msgstr "Photo1"
+
+#: diary/models.py:13
+msgid "写真2"
+msgstr "Photo2"
+
+#: diary/models.py:14
+msgid "写真3"
+msgstr "Photo3"
+
+#: diary/models.py:16 templates/diary_detail.html:90
+msgid "更新日時"
+msgstr "Updated_at"
+
+#: enjoy_language_project/settings.py:125
+msgid "English"
+msgstr ""
+
+#: enjoy_language_project/settings.py:126
+msgid "Japanese"
+msgstr ""
+
+#: enjoy_language_project/settings.py:127
+msgid "Indonesian"
+msgstr ""
+
+#: pages/forms.py:8
+msgid "お名前"
+msgstr "Name: "
+
+#: pages/forms.py:9
+msgid "メールアドレス"
+msgstr "Email"
+
+#: pages/forms.py:10 templates/diary_detail.html:34
+msgid "タイトル"
+msgstr "Title"
+
+#: pages/forms.py:11
+msgid "メッセージ"
+msgstr "Message"
+
+#: pages/forms.py:17
+msgid "お名前をここに入力してください。"
+msgstr "Please Put Your Name"
+
+#: pages/forms.py:20
+msgid "メールアドレスをここに入力してください。"
+msgstr "Please Put Your Email"
+
+#: pages/forms.py:23
+msgid "タイトルをここに入力してください。"
+msgstr "Please Put Title"
+
+#: pages/forms.py:26
+msgid "メッセージをここに入力してください。"
+msgstr "Please Put Message"
+
+#: templates/403.html:5
+msgid "403エラー | Enjoy Language"
+msgstr "Error 403"
+
+#: templates/403.html:11
+msgid "アクセス権限がありません。"
+msgstr "No Comments"
+
+#: templates/404.html:6
+msgid "404エラー | Enjoy Language"
+msgstr "Error 404"
+
+#: templates/404.html:12
+msgid "ページが見つかりませんでした。"
+msgstr "The requested URL was not found on this server."
+
+#: templates/500.html:5
+msgid "500エラー | Enjoy Language"
+msgstr "Error 500"
+
+#: templates/500.html:11
+msgid "想定外のエラーが発生しました。"
+msgstr "There was an error. Please try again later."
+
+#: templates/account/verification_sent1.html:5
+#: templates/account/verification_sent1.html:8
+msgid "Verify Your E-mail Address"
+msgstr ""
+
+#: templates/account/verification_sent1.html:10
+msgid ""
+"We have sent an e-mail to you for verification. Follow the link provided to "
+"finalize the signup process. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: templates/base.html:52
+msgid "Profile"
+msgstr ""
+
+#: templates/base.html:55 templates/home.html:78
+msgid "ユーザー検索"
+msgstr "Talk with Friends"
+
+#: templates/base.html:101
+msgid "お問い合わせ"
+msgstr "Contact"
+
+#: templates/comments_create.html:5
+msgid "コメント作成 | Enjoy Language"
+msgstr "Write Comment"
+
+#: templates/comments_create.html:18 templates/diary_create.html:18
+msgid "作成"
+msgstr "Write"
+
+#: templates/comments_delete.html:6
+msgid "コメント削除 | Enjoy Language"
+msgstr "Delete Comment"
+
+#: templates/comments_delete.html:16 templates/diary_delete.html:15
+msgid "本当に削除しますか？"
+msgstr "Are you sure to delete comment?"
+
+#: templates/comments_delete.html:17 templates/diary_delete.html:16
+#: templates/diary_detail.html:117 templates/diary_detail.html:130
+#: templates/diary_list.html:95 templates/diary_list.html:127
+#: templates/profile.html:141 templates/profile.html:172
+msgid "削除"
+msgstr "Delete"
+
+#: templates/comments_delete.html:18 templates/diary_delete.html:17
+#: templates/diary_update.html:19 templates/profile_change.html:19
+msgid "キャンセル"
+msgstr "Cancel"
+
+#: templates/diary/furigana.html:6
+msgid "ルビをふる"
+msgstr "Add Japanese reading aids "
+
+#: templates/diary/like.html:8 templates/diary/like.html:11
+msgid "いいね"
+msgstr "Like"
+
+#: templates/diary/translate.html:9
+msgid "日本語を英語に翻訳"
+msgstr "Translate Japanese to English"
+
+#: templates/diary_create.html:5
+msgid "日記作成 | Enjoy Language"
+msgstr "Write Diary"
+
+#: templates/diary_delete.html:5
+msgid "日記削除 | Enjoy Language"
+msgstr "Delete Diary"
+
+#: templates/diary_detail.html:5
+msgid "日記詳細 | Enjoy Language"
+msgstr "Diary Detail"
+
+#: templates/diary_detail.html:23
+msgid "プロフィール"
+msgstr "Profile"
+
+#: templates/diary_detail.html:123
+msgid "コメントがありません。"
+msgstr "No Comments"
+
+#: templates/diary_detail.html:126
+msgid "記事にコメントする"
+msgstr "Write Comment"
+
+#: templates/diary_detail.html:128 templates/diary_list.html:92
+#: templates/profile.html:138
+msgid "編集"
+msgstr "Edit"
+
+#: templates/diary_list.html:5 templates/diary_list1.html:5
+#: templates/furigana_result.html:5 templates/translate_no_result.html:5
+#: templates/translate_result.html:5
+msgid "みんなの日記| Enjoy Language"
+msgstr "Friens Diary"
+
+#: templates/diary_list.html:19 templates/diary_list1.html:19
+#: templates/profile.html:70
+msgid "日記を書く"
+msgstr "Write Diary"
+
+#: templates/diary_list.html:153 templates/diary_list1.html:133
+#: templates/profile.html:197
+msgid "日記がありません。"
+msgstr "No Diaries."
+
+#: templates/diary_update.html:5
+msgid "日記編集 | Enjoy Language"
+msgstr "Edit Diary"
+
+#: templates/diary_update.html:18 templates/profile_change.html:18
+msgid "更新"
+msgstr "Change"
+
+#: templates/home.html:6
+msgid "言語を楽しもう！世界の仲間と言語を学び・教えあおう。"
+msgstr "Let's Enjoy Language"
+
+#: templates/home.html:13
+msgid "言語を楽しもう！"
+msgstr "Let's Enjoy Language"
+
+#: templates/home.html:14
+msgid "世界の仲間と学ぼう"
+msgstr "Learn with Fiends in World"
+
+#: templates/home.html:41
+msgid "みんなの日記"
+msgstr "Friens Diary"
+
+#: templates/home.html:42
+msgid "仲間の投稿を見て言語を学ぼう"
+msgstr "Read Friends Diary to Learn."
+
+#: templates/home.html:59
+msgid "Write Your Diary"
+msgstr ""
+
+#: templates/home.html:60
+msgid "あなたの日記を投稿しよう"
+msgstr "Write your Diary"
+
+#: templates/home.html:77
+msgid "Find Friends"
+msgstr ""
+
+#: templates/inquiry.html:5
+msgid "お問い合わせ | Enjoy Language"
+msgstr "Contact"
+
+#: templates/inquiry.html:31
+msgid "送信"
+msgstr "Send"
+
+#: templates/profile.html:5
+msgid "プロフィール | Enjoy Language"
+msgstr "Profile | Enjoy Language"
+
+#: templates/profile.html:19
+msgid "プロフィールを編集"
+msgstr "Edit Profile"
+
+#: templates/profile.html:30
+msgid "登録日: "
+msgstr "Joined: "
+
+#: templates/profile.html:34
+msgid "名前: "
+msgstr "Name: "
+
+#: templates/profile.html:38
+msgid "年齢: "
+msgstr "Age: "
+
+#: templates/profile.html:43
+msgid "母語： "
+msgstr "Mother Language: "
+
+#: templates/profile.html:48
+msgid "学習言語: "
+msgstr "Learning Language: "
+
+#: templates/profile.html:53
+msgid "自己紹介： "
+msgstr "Self Introduction: "
+
+#: templates/profile_change.html:5
+msgid "プロフィールの編集 | Enjoy Language"
+msgstr "Edit Profile"
+
+#: templates/user_search_all.html:5 templates/user_search_ll.html:5
+#: templates/user_search_ml.html:5
+msgid "ユーザー検索(全ユーザー)| Enjoy Language"
+msgstr "Search User(All)"
+
+#: templates/user_search_all.html:18
+msgid "  全ユーザー　"
+msgstr "All User"
+
+#: templates/user_search_all.html:18 templates/user_search_ll.html:18
+msgid "学習を手伝おう　"
+msgstr "Help Learning"
+
+#: templates/user_search_all.html:18 templates/user_search_ll.html:18
+msgid "　学習仲間"
+msgstr "Study Buddy"
+
+#: templates/user_search_all.html:33 templates/user_search_ll.html:33
+#: templates/user_search_ml.html:33
+msgid "該当するユーザーがいません。"
+msgstr "There is no applicable user."
+
+#: templates/user_search_ll.html:18
+msgid "全ユーザー　"
+msgstr "All User"
+
+#: templates/user_search_ml.html:18
+msgid "全ユーザー"
+msgstr "All User"
+
+#: templates/user_search_ml.html:18
+msgid "　学習を手伝おう　"
+msgstr "Help Learning"
+
+#: templates/user_search_ml.html:18
+msgid "学習仲間"
+msgstr "Study Buddy"
+
+#: users/models.py:10
+msgid "日本語"
+msgstr "Japanese"
+
+#: users/models.py:11
+msgid "英語"
+msgstr "English"
+
+#: users/models.py:12
+msgid "インドネシア語"
+msgstr "Indonesian"
+
+#: users/models.py:16
+msgid "男性"
+msgstr "Male"
+
+#: users/models.py:17
+msgid "女性"
+msgstr "Female"
+
+#: users/models.py:21
+msgid "ニックネーム"
+msgstr "Nickname"
+
+#: users/models.py:21
+msgid "プロフィールを設定してください。"
+msgstr "Please Set Your Profile"
+
+#: users/models.py:22
+msgid "母語"
+msgstr "Mother Language: "
+
+#: users/models.py:23
+msgid "学習言語"
+msgstr "Learning Language: "
+
+#: users/models.py:24
+msgid "性別"
+msgstr "Sex"
+
+#: users/models.py:25
+msgid "年齢"
+msgstr "Age: "
+
+#: users/models.py:26
+msgid "自己紹介"
+msgstr "Self Introduction: "
+
+#: users/models.py:27
+msgid "プロフィール写真"
+msgstr "Profile Photo"
+
+#~ msgid "コメントを書く | Enjoy Language"
+#~ msgstr "Write Comment"
+
+#~ msgid "送信せずに戻る"
+#~ msgstr "Back"
+
+#~ msgid "(いいねを取り消す)"
+#~ msgstr "Cancel Like"
+
+#~ msgid "(いいねをする)"
+#~ msgstr "Like"
