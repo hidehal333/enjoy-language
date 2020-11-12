@@ -8,22 +8,15 @@ services:
       - ENVIRONMENT=production
       - SECRET_KEY=oij0o9g^=rr586g#z$$s63s2&kre&=57pn2hs*kh!cjj$$x_28z_
       - DEBUG=0
-    volumes:
-      - .:/code
     ports:
       - 8000:8000
     depends_on:
       - db
   db:
     image: postgres:11
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
     ports:
       - "5432"
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
-
-volumes:
-  postgres_data:
