@@ -230,9 +230,12 @@ if ENVIRONMENT == 'production':
 
     #CLOUDINARY
     CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': 'huowmdxzd',
-        'API_KEY': '938313735237612',
-        'API_SECRET': '1fS2v3-OrrZP-Piv-fPY5Ch5ElA'
+        # 'CLOUD_NAME': 'huowmdxzd',
+        # 'API_KEY': '938313735237612',
+        # 'API_SECRET': '1fS2v3-OrrZP-Piv-fPY5Ch5ElA'
+        'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+        'API_KEY': os.environ.get('API_KEY'),
+        'API_SECRET':os.environ.get('API_SECRET')
     }
 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
