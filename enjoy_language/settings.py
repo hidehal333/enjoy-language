@@ -8,9 +8,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
@@ -32,13 +29,14 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'storages',
 
     # Third-party
     'crispy_forms',
     'allauth',
     'allauth.account',
     'debug_toolbar',
+    'cloudinary',
+    'cloudinary_storage',
 
     # Local
     'users.apps.UsersConfig',
@@ -230,38 +228,14 @@ if ENVIRONMENT == 'production':
     CSRF_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    #AWS S3
-    # AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
-    # AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-    # AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
-    #
-    # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-    # S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
-    # MEDIA_URL = S3_URL
-    #
-    # AWS_S3_FILE_OVERWRITE = False
-    # AWS_DEFAULT_ACL = None
+#CLOUDINARY
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'huowmdxzd',
+    'API_KEY': '938313735237612',
+    'API_SECRET': '1fS2v3-OrrZP-Piv-fPY5Ch5ElA'
+}
 
-#if not DEBUG:
-
-# 共通の設定
-AWS_ACCESS_KEY_ID = 'AKIAVUYNQPEXSW4GSK5X'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'enjoy_language'
-
-
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-
-
-AWS_LOCATION = 'media'
-
-MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-
-
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # Heroku

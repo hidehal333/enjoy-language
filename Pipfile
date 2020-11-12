@@ -15,6 +15,7 @@ gunicorn = "*"
 dj-database-url = "*"
 django-storages = "*"
 boto3 = "*"
+django-cloudinary-storage = "*"
 
 [dev-packages]
 
