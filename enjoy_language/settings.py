@@ -228,14 +228,14 @@ if ENVIRONMENT == 'production':
     CSRF_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-#CLOUDINARY
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'huowmdxzd',
-    'API_KEY': '938313735237612',
-    'API_SECRET': '1fS2v3-OrrZP-Piv-fPY5Ch5ElA'
-}
+    #CLOUDINARY
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': 'huowmdxzd',
+        'API_KEY': '938313735237612',
+        'API_SECRET': '1fS2v3-OrrZP-Piv-fPY5Ch5ElA'
+    }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 # Heroku
