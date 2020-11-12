@@ -8,6 +8,7 @@ services:
       - ENVIRONMENT=development
       - SECRET_KEY=oij0o9g^=rr586g#z$$s63s2&kre&=57pn2hs*kh!cjj$$x_28z_
       - DEBUG=1
+      - EMAIL_HOST_PASSWORD=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
     volumes:
       - .:/code
     ports:

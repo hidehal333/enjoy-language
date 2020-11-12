@@ -8,9 +8,6 @@ services:
       - ENVIRONMENT=production
       - SECRET_KEY=oij0o9g^=rr586g#z$$s63s2&kre&=57pn2hs*kh!cjj$$x_28z_
       - DEBUG=0
-      - AWS_ACCESS_KEY_ID =AKIAVUYNQPEXUIWIVB2Q
-      - AWS_SECRET_ACCESS_KEY =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
-      - AWS_STORAGE_BUCKET_NAME =enjoy-language
     ports:
       - 8000:8000
     depends_on:

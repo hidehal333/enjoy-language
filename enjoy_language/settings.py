@@ -188,14 +188,23 @@ ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_SUBJECT_PREFIX = ''
 
 # デフォルトのメール送信元を設定
-DEFAULT_FROM_EMAIL = 'admin@example.com'
+DEFAULT_FROM_EMAIL = 'admin@enjoylanguage.com'
 
 AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',  # 一般ユーザー用(メールアドレス認証)
     'django.contrib.auth.backends.ModelBackend',  # 管理サイト用(ユーザー名認証)
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+#クラウドメール配信サービス
+DEFAULT_FROM_EMAIL = 'support-enjoylanguage@example.com'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 MESSAGE_TAGS = {
     messages.ERROR: 'alert alert-danger',
@@ -230,9 +239,6 @@ if ENVIRONMENT == 'production':
 
     #CLOUDINARY
     CLOUDINARY_STORAGE = {
-        # 'CLOUD_NAME': 'huowmdxzd',
-        # 'API_KEY': '938313735237612',
-        # 'API_SECRET': '1fS2v3-OrrZP-Piv-fPY5Ch5ElA'
         'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
         'API_KEY': os.environ.get('API_KEY'),
         'API_SECRET':os.environ.get('API_SECRET')

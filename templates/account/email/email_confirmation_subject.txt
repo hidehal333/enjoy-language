@@ -1,1 +1,4 @@
-ユーザー登録確認メール
+{% load i18n %}
+{% autoescape off %}
+{% blocktrans %}ユーザー登録確認メール{% endblocktrans %}
+{% endautoescape %}
