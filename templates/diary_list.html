@@ -10,6 +10,7 @@
 <link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
 {% endblock %}
 
+
 {% block contents %}
 <div class="container">
     <div class="row">
@@ -57,33 +58,28 @@
                     {% if diary.photo1 %}
                       <div class="row text-center align-items-center px-1">
                         <div class="col">
-                          <img src="{{ diary.photo1.url }}" class="img-fluid"/>
+                          <img src="{{ diary.photo1.url }}" class="img-fluid image" data-src="{{ diary.photo1.url }}"/>
                         </div>
                         {% if diary.photo2 %}
                           <div class="col">
-                            <img src="{{ diary.photo2.url }}" class="img-fluid"/>
+                            <img src="{{ diary.photo2.url }}" class="img-fluid image" data-src="{{ diary.photo2.url }}"/>
                           </div>
                           {% if diary.photo3 %}
                             <div class="col">
-                              <img src="{{ diary.photo3.url }}" class="img-fluid"/>
+                              <img src="{{ diary.photo3.url }}" class="img-fluid image" data-src="{{ diary.photo3.url }}"/>
                             </div>
                           {% endif %}
                         {% endif %}
                       </div>
                     {% endif %}
                     <!-- 翻訳をする -->
-                    <div class="row d-flex align-items-center">
-                      <div class="col-auto" id="translate_{{diary.id}}" class="translate">
-                          {% include 'diary/translate.html' %}
-                      </div>
-                    </div>
+
                     <!-- 日記リストフッター -->
                     <div class="card-footer bg-transparent border-top-0">
                       <div class="row d-flex align-items-center">
                         <!-- いいね、コメント数 -->
-                        <div class="col-auto" id="like_{{diary.id}}" class="like">
-                            {% include 'diary/like.html' %}
-                        </div>
+                        {% include 'diary/like.html' %}
+                        {% include 'diary/translate.html' %}
                         <div class="col text-left">
                           <a class="btn btn-light border-secondary"  href="{% url 'comments:comments_create' diary.pk %}"  rel="nofollow" name="num_comment">{% trans "コメント" %} <span class="badge badge-light">{{ comments_list|length}}</span></a>
                         </div>
@@ -139,7 +135,7 @@
                         {% if comment.photo %}
                           <div class="row align-items-center px-1">
                             <div class="col">
-                              <img src="{{ comment.photo.url }}" class="img-fluid" width="200" height="200"/>
+                              <img src="{{ comment.photo.url }}" class="img-fluid image" data-src="{{ comment.photo.url }}" width="200" height="200"/>
                             </div>
                           </div>
                         {% endif %}
@@ -160,4 +156,13 @@
     </div>
 </div>
 
+<!-- 画像拡大用 -->
+<div class="modal-wrapper" style="z-index: 5">
+    <img src="" alt="" class="modal-image">
+</div>
+
+{% endblock %}
+
+{% block extrajs %}
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
