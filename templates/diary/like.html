@@ -1,6 +1,6 @@
 {% load i18n %}
 
-{% if request.user.is_authenticated %}
+
    <form action="{% url 'diary:like' %}" method="POST">
      {% csrf_token %}
      {% if liked %}
@@ -11,4 +11,4 @@
       <button type="submit" id="like_{{diary.id}}" name="diary_id" value="{{diary.id}}" class="btn btn-light border-secondary like">{% trans "いいね" %} <span class="badge badge-light">{{diary.like.count}}</span></button>
      {% endif %}
    </form>
- {% endif %}
+ 

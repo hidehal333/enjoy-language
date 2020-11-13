@@ -46,13 +46,15 @@ def diary_list(request):
 
 
     #ページネーション
-    page_obj_c = paginate_queryset(request, comments_list, 5)
+    #1ページあたりの日記表示数
+    per_page = 10
+    page_obj_c = paginate_queryset(request, comments_list, per_page)
     comments_list = page_obj_c.object_list
 
-    page_obj = paginate_queryset(request, diary_list, 5)
+    page_obj = paginate_queryset(request, diary_list, per_page)
     diary_list = page_obj.object_list
 
-    page_obj = paginate_queryset(request, liked_list, 5)
+    page_obj = paginate_queryset(request, liked_list, per_page)
     liked_list = page_obj.object_list
 
     #テンプレート用に2つのクエリをセットにする。
