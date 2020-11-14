@@ -72,25 +72,30 @@
                         {% endif %}
                       </div>
                     {% endif %}
-                    <!-- 翻訳をする -->
-
                     <!-- 日記リストフッター -->
                     <div class="card-footer bg-transparent border-top-0">
-                      <div class="row d-flex align-items-center">
-                        <!-- いいね、コメント数 -->
-                        {% include 'diary/like.html' %}
-                        {% include 'diary/translate.html' %}
-                        <div class="col text-left">
-                          <a class="btn btn-light border-secondary"  href="{% url 'comments:comments_create' diary.pk %}"  rel="nofollow" name="num_comment">{% trans "コメント" %} <span class="badge badge-light">{{ comments_list|length}}</span></a>
-                        </div>
+                      <div class="row justify-content-end">
                         {% if request.user.id == diary.user.id %}
-                        <div class="col-2 text-right">
+                        <div class="col-auto text-right">
                           <a class="btn btn-success mt-5 mb-3" href="{% url 'diary:diary_update' diary.pk %}">{% trans "編集" %}</a>
                         </div>
-                        <div class="col-3 text-right">
+                        <div class="col-auto text-right">
                           <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'diary:diary_delete' diary.pk %}">{% trans "削除" %}</a>
                         </div>
                         {% endif %}
+                      </div>
+                      <div class="row justify-content-start">
+                        <!-- いいね、コメント数 -->
+                        <div class="col-3">
+                        {% include 'diary/like.html' %}
+                        </div>
+                        <div class="col-3">
+                          <a class="btn btn-light border-secondary"  href="{% url 'comments:comments_create' diary.pk %}"  rel="nofollow" name="num_comment">{% trans "コメント" %} <span class="badge badge-light">{{ comments_list|length}}</span></a>
+                        </div>
+                        <!-- 翻訳をする -->
+                        <div class="col">
+                        {% include 'diary/translate.html' %}
+                        </div>
                       </div>
 
                       <!-- コメントリスト -->
@@ -143,7 +148,10 @@
                     {% endfor %}
                     </div>
                   </div>
-
+                  <!-- 画像拡大用 -->
+                  <div class="modal-wrapper" style="z-index: 5">
+                      <img src="" alt="" class="modal-image">
+                  </div>
                   <hr>
                 {% empty %}
                     <p>{% trans "日記がありません。" %}</p>
@@ -156,10 +164,7 @@
     </div>
 </div>
 
-<!-- 画像拡大用 -->
-<div class="modal-wrapper" style="z-index: 5">
-    <img src="" alt="" class="modal-image">
-</div>
+
 
 {% endblock %}
 

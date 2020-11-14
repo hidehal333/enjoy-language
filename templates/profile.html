@@ -108,15 +108,15 @@
                     {% if diary.photo1 %}
                       <div class="row text-center align-items-center px-1">
                         <div class="col">
-                          <img src="{{ diary.photo1.url }}" class="img-fluid"/>
+                          <img src="{{ diary.photo1.url }}" class="img-fluid image" data-src="{{ diary.photo1.url }}"/>
                         </div>
                         {% if diary.photo2 %}
                           <div class="col">
-                            <img src="{{ diary.photo2.url }}" class="img-fluid"/>
+                            <img src="{{ diary.photo2.url }}" class="img-fluid image" data-src="{{ diary.photo2.url }}"/>
                           </div>
                           {% if diary.photo3 %}
                             <div class="col">
-                              <img src="{{ diary.photo3.url }}" class="img-fluid"/>
+                              <img src="{{ diary.photo3.url }}" class="img-fluid image" data-src="{{ diary.photo3.url }}"/>
                             </div>
                           {% endif %}
                         {% endif %}
@@ -125,22 +125,28 @@
 
                     <!-- 日記リストフッター -->
                     <div class="card-footer bg-transparent border-top-0">
-                      <div class="row d-flex align-items-center">
-                        <!-- いいね、コメント数 -->
-                        <div class="col-auto" id="like">
-                            {% include 'diary/like.html' %}
-                        </div>
-                        <div class="col text-left">
-                          <a class="btn btn-light border-secondary"  href="{% url 'comments:comments_create' diary.pk %}"  rel="nofollow" name="num_comment">{% trans "コメント" %} <span class="badge badge-light">{{ comments_list|length}}</span></a>
-                        </div>
+                      <div class="row justify-content-end">
                         {% if request.user.id == diary.user.id %}
-                        <div class="col-2 text-right">
+                        <div class="col-auto text-right">
                           <a class="btn btn-success mt-5 mb-3" href="{% url 'diary:diary_update' diary.pk %}">{% trans "編集" %}</a>
                         </div>
-                        <div class="col-3 text-right">
+                        <div class="col-auto text-right">
                           <a class="btn btn-danger mt-5 ml-2 mb-3" href="{% url 'diary:diary_delete' diary.pk %}">{% trans "削除" %}</a>
                         </div>
                         {% endif %}
+                      </div>
+                      <div class="row justify-content-start">
+                        <!-- いいね、コメント数 -->
+                        <div class="col-3">
+                        {% include 'diary/like.html' %}
+                        </div>
+                        <div class="col-3">
+                          <a class="btn btn-light border-secondary"  href="{% url 'comments:comments_create' diary.pk %}"  rel="nofollow" name="num_comment">{% trans "コメント" %} <span class="badge badge-light">{{ comments_list|length}}</span></a>
+                        </div>
+                        <!-- 翻訳をする -->
+                        <div class="col">
+                        {% include 'diary/translate.html' %}
+                        </div>
                       </div>
                       <!-- コメントリスト -->
                       {% if comments_list %}
@@ -184,13 +190,17 @@
                         {% if comment.photo %}
                           <div class="row align-items-center px-1">
                             <div class="col">
-                              <img src="{{ comment.photo.url }}" class="img-fluid" width="200" height="200"/>
+                              <img src="{{ comment.photo.url }}" class="img-fluid image" data-src="{{ comment.photo.url }}" width="200" height="200"/>
                             </div>
                           </div>
                         {% endif %}
                       </div>
                     {% endfor %}
                     </div>
+                  </div>
+                  <!-- 画像拡大用 -->
+                  <div class="modal-wrapper" style="z-index: 5">
+                      <img src="" alt="" class="modal-image">
                   </div>
                   <hr>
                 {% empty %}
@@ -203,4 +213,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extrajs %}
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

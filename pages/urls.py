@@ -12,4 +12,5 @@ urlpatterns =[
     path('user_searcha_all', views.UserSearchAllListView.as_view(), name = 'user_search_all'),
     path('user_search_mother_language', views.UserSearchMLListView.as_view(), name = 'user_search_mother_language'),
     path('user_search_learn_language', views.UserSearchLLListView.as_view(), name = 'user_search_learn_language'),
+    path('guest_login/', views.guest_login, name = 'guest_login'),
 ]

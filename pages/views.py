@@ -2,7 +2,7 @@ import logging
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView, ListView, UpdateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -133,3 +133,13 @@ class UserSearchLLListView(LoginRequiredMixin,ListView):
 
     def get_queryset(self):
         return CustomUser.objects.filter(last_login__isnull=False, learn_language=self.request.user.learn_language).exclude(id=self.request.user.id)
+
+
+#簡単ログイン
+from django.contrib.auth import login
+from django.http import HttpResponse
+
+def guest_login(request):
+    guest_user = CustomUser.objects.get(email='guestuser@example.com')
+    login(request, guest_user, backend='django.contrib.auth.backends.ModelBackend')
+    return redirect('diary:diary_list')
