@@ -11,5 +11,7 @@ class DiaryAdmin(admin.ModelAdmin):
     inlines = [
         CommentsInline,
     ]
+    list_display = ('content', 'user', 'created_at')
+    ordering = ('-created_at',)
 
 admin.site.register(Diary, DiaryAdmin)
