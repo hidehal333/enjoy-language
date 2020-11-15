@@ -1,3 +1,5 @@
+from django.http import JsonResponse
+from django.core import serializers
 import logging
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -6,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, FormView, ListView, UpdateView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 from diary.models import Diary
 from comments.models import Comments
@@ -143,3 +146,101 @@ def guest_login(request):
     guest_user = CustomUser.objects.get(email='guestuser@example.com')
     login(request, guest_user, backend='django.contrib.auth.backends.ModelBackend')
     return redirect('diary:diary_list')
+
+
+#user_search
+class UserSearchPageView(LoginRequiredMixin,ListView):
+    model = CustomUser
+    template_name = 'user_search.html'
+    context_object_name = 'user_search'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return CustomUser.objects.filter(last_login__isnull=False).exclude(id=self.request.user.id)
+
+#ユーザー検索（全ユーザー）  ajax
+def ajax_UserSearchAll(request):
+
+    # 検索キーワードがあればそれで絞り込み、なければ全ての記事
+    # JSONシリアライズするには、Querysetをリストにする必要あり
+    user_queryset = CustomUser.objects.filter(last_login__isnull=False).exclude(id=request.user.id) # 自分以外の全ユーザー
+    print('user_queryset')
+    print(user_queryset)
+
+    data=[]
+    for user in  user_queryset:
+        dict={
+            "id":user.id,
+            "name":user.nickname,
+            "age":user.age,
+            "mother_language":user.mother_language,
+            "learn_language":user.learn_language,
+            "profile_photo_url":user.profile_photo.url
+        }
+        data.append(dict)
+    print("data")
+    print(data)
+
+    d = {
+        'user_list': data,
+    }
+    print(d)
+    return JsonResponse(d)
+
+#ユーザー検索（リクエストユーザー母語=学習言語）  ajax
+def ajax_UserSearchMother(request):
+
+    # 検索キーワードがあればそれで絞り込み、なければ全ての記事
+    # JSONシリアライズするには、Querysetをリストにする必要あり
+    user_queryset = CustomUser.objects.filter(last_login__isnull=False, learn_language=request.user.mother_language).exclude(id=request.user.id)
+    print('user_queryset')
+    print(user_queryset)
+
+    data=[]
+    for user in  user_queryset:
+        dict={
+            "id":user.id,
+            "name":user.nickname,
+            "age":user.age,
+            "mother_language":user.mother_language,
+            "learn_language":user.learn_language,
+            "profile_photo_url":user.profile_photo.url
+        }
+        data.append(dict)
+    print("data")
+    print(data)
+
+    d = {
+        'user_list': data,
+    }
+    print(d)
+    return JsonResponse(d)
+
+#ユーザー検索（リクエストユーザー学習言語=学習言語）  ajax
+def ajax_UserSearchLearn(request):
+
+    # 検索キーワードがあればそれで絞り込み、なければ全ての記事
+    # JSONシリアライズするには、Querysetをリストにする必要あり
+    user_queryset = CustomUser.objects.filter(last_login__isnull=False, learn_language=request.user.learn_language).exclude(id=request.user.id)
+    print('user_queryset')
+    print(user_queryset)
+
+    data=[]
+    for user in  user_queryset:
+        dict={
+            "id":user.id,
+            "name":user.nickname,
+            "age":user.age,
+            "mother_language":user.mother_language,
+            "learn_language":user.learn_language,
+            "profile_photo_url":user.profile_photo.url
+        }
+        data.append(dict)
+    print("data")
+    print(data)
+
+    d = {
+        'user_list': data,
+    }
+    print(d)
+    return JsonResponse(d)

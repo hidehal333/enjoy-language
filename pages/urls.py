@@ -13,4 +13,8 @@ urlpatterns =[
     path('user_search_mother_language', views.UserSearchMLListView.as_view(), name = 'user_search_mother_language'),
     path('user_search_learn_language', views.UserSearchLLListView.as_view(), name = 'user_search_learn_language'),
     path('guest_login/', views.guest_login, name = 'guest_login'),
+    path('ajax_usersearchall/', views.ajax_UserSearchAll, name = 'ajax_usersearchall'),
+    path('ajax_usersearchlearn/', views.ajax_UserSearchLearn, name = 'ajax_usersearchlearn'),
+    path('ajax_usersearchmother/', views.ajax_UserSearchMother, name = 'ajax_usersearchmother'),
+    path('user_search/', views.UserSearchPageView.as_view(), name = 'user_search'),
 ]
