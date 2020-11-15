@@ -52,7 +52,7 @@
                 <a class="nav-link" href="{% url 'pages:profile' pk=user.pk %}">{% trans "Profile" %}({{ user.nickname }})</a>
             </li>
             <li class="nav-item {% block active_user_searchs %}{% endblock %}">
-                <a class="nav-link" href="{% url 'pages:user_search_all' %}">{% trans "ユーザー検索" %}</a>
+                <a class="nav-link" href="{% url 'pages:user_search' %}">{% trans "ユーザー検索" %}</a>
             </li>
             <li class="nav-item  {% block active_logout %}{% endblock %}">
                 <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
