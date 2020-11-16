@@ -17,3 +17,63 @@ header.masthead {
 background: linear-gradient(0deg, #09eeaf 0%, #1b00ff 100%);
 
 }
+
+
+
+/* 画像を拡大表示 */
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+.wrapper {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     width: 100%;
+     height: 100vh;
+}
+
+.wrapper img {
+     width: 200px;
+     object-fit: contain;
+     cursor: pointer;
+}
+
+/* modal */
+
+.modal-wrapper {
+     width: 100%;
+     height: 100%;
+     position: fixed;
+     top: 0;
+     left: 0;
+     background: rgba(0,0,0,0.5);
+     pointer-events: none;
+     opacity: 0;
+     transition: 0.25s ease-out;
+     
+
+}
+
+.modal-wrapper.show {
+     opacity: 1;
+     pointer-events: all;
+}
+
+.modal-image {
+     position: absolute;
+     max-width: 80%;
+     max-height: 80%;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     object-fit: cover;
+     opacity: 0;
+     transition: 0.5s ease-out;
+}
+
+.modal-image.show {
+     opacity: 1;
+}
