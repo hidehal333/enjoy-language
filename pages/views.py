@@ -42,32 +42,28 @@ class InquiryPageView(FormView):
 def listview(request, pk):
     user = CustomUser.objects.get(pk=pk)
     profile_list = CustomUser.objects.filter(pk=pk)
+
+
+    #日記リスト取得
     diary_list = Diary.objects.filter(user_id=pk).order_by('-created_at')
 
-    #コメントリスト取得
-    #上記で取得した日記リストオブジェクトから日記idを取得(diary_id=diary_list[i].id)
-    comments_list=[]
-    for i in range(len(diary_list)):
-        comments_list.append(Comments.objects.filter(diary_id=diary_list[i].id).order_by('created_at'))
+    #いいね
+    liked_dic={}
+    for diary in diary_list:
+        liked = False
+
+        if diary.like.filter(id=request.user.id).exists():
+            liked=True
+        liked_dic[diary.id]=liked
 
     #ページネーション
-    page_obj_c = paginate_queryset(request, comments_list, 5)
-    comments_list = page_obj_c.object_list
+    #1ページあたりの日記表示数
+    per_page = 10
 
-    page_obj = paginate_queryset(request, diary_list, 5)
+    page_obj = paginate_queryset(request, diary_list, per_page)
     diary_list = page_obj.object_list
 
-    #テンプレート用に2つのクエリをセットにする。
-    items=[]
-    for item in zip(diary_list, comments_list):
-        items.append(item)
-
-    dict = {
-        'profile_list':profile_list,
-        'items': items,
-        'object_id': pk
-    }
-    return render(request, 'profile.html', dict)
+    return render(request, 'profile.html', {'profile_list':profile_list, 'diary_list':diary_list, 'liked_dic':liked_dic})
 
 def paginate_queryset(request, queryset, count):
     """Pageオブジェクトを返す。
