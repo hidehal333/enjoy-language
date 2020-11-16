@@ -17,13 +17,13 @@
             <div class="col-lg-8 col-md-10 mx-auto">
               <div class="row mt-5 mb-5 align-items-center">
                 <div class="col">
-                  <button id="ajax-user_search_all" class="btn btn-dark border-secondary" type="submit" >{% trans "全ユーザー" %}</button>
+                  <button id="ajax-user_search_all" class="btn btn-dark border-secondary" type="button" >{% trans "全ユーザー" %}</button>
                 </div>
                 <div class="col">
-                  <button id="ajax-user_search_mother" class="btn btn-light border-secondary" type="submit" >{% trans "学習を手伝おう" %}</button>
+                  <button id="ajax-user_search_mother" class="btn btn-light border-secondary" type="button" >{% trans "学習を手伝おう" %}</button>
                 </div>
                 <div class="col">
-                  <button id="ajax-user_search_learn" class="btn btn-light border-secondary" type="submit" >{% trans "学習仲間" %}</button>
+                  <button id="ajax-user_search_learn" class="btn btn-light border-secondary" type="button" >{% trans "学習仲間" %}</button>
                 </div>
               </div>
               <div class="post-preview" id="user_search">
@@ -96,7 +96,6 @@
         'url': '{% url "pages:ajax_usersearchall" %}',
         'type': 'GET',
     }).done( response => {
-      console.log(response.user_list);
       // 記事欄を真っ白にする。
       $('#user_search').empty();
 
@@ -124,7 +123,6 @@
           $('#user_search').append(user_list);
         }
 
-        console.log(user);
       }
     });
   });
@@ -142,7 +140,6 @@
         'url': '{% url "pages:ajax_usersearchmother" %}',
         'type': 'GET',
     }).done( response => {
-      console.log(response.user_list);
       // 記事欄を真っ白にする。
       $('#user_search').empty();
 
@@ -170,8 +167,6 @@
           `;
           $('#user_search').append(user_list);
         }
-
-        console.log(user);
       }
     });
   });
@@ -189,7 +184,6 @@
           'url': "{% url 'pages:ajax_usersearchlearn' %}",
           'type': 'GET',
       }).done( response => {
-        console.log(response.user_list);
         // 記事欄を真っ白にする。
         $('#user_search').empty();
 
@@ -217,7 +211,6 @@
           `;
           $('#user_search').append(user_list);
         }
-        console.log(user);
       }
     });
   });

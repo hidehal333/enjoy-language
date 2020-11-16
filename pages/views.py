@@ -106,38 +106,6 @@ class ProfileChangeView(LoginRequiredMixin,UpdateView):
     def get_object(self):
         return self.request.user
 
-#ユーザー検索（全ユーザー）
-class UserSearchAllListView(LoginRequiredMixin,ListView):
-    model = CustomUser
-    template_name = 'user_search_all.html'
-    context_object_name = 'user_search'
-    paginate_by = 10
-
-    def get_queryset(self):
-        return CustomUser.objects.filter(last_login__isnull=False).exclude(id=self.request.user.id)
-
-#ユーザー検索（リクエストユーザー母語=学習言語）
-class UserSearchMLListView(LoginRequiredMixin,ListView):
-    model = CustomUser
-    template_name = 'user_search_ml.html'
-    context_object_name = 'user_search'
-    paginate_by = 10
-
-    def get_queryset(self):
-        return CustomUser.objects.filter(last_login__isnull=False, learn_language=self.request.user.mother_language).exclude(id=self.request.user.id)
-
-
-#ユーザー検索（リクエストユーザー学習言語=学習言語）
-class UserSearchLLListView(LoginRequiredMixin,ListView):
-    model = CustomUser
-    template_name = 'user_search_ll.html'
-    context_object_name = 'user_search'
-    paginate_by = 10
-
-    def get_queryset(self):
-        return CustomUser.objects.filter(last_login__isnull=False, learn_language=self.request.user.learn_language).exclude(id=self.request.user.id)
-
-
 #簡単ログイン
 from django.contrib.auth import login
 from django.http import HttpResponse
@@ -159,14 +127,12 @@ class UserSearchPageView(LoginRequiredMixin,ListView):
         return CustomUser.objects.filter(last_login__isnull=False).exclude(id=self.request.user.id)
 
 #ユーザー検索（全ユーザー）  ajax
+@login_required
 def ajax_UserSearchAll(request):
 
     # 検索キーワードがあればそれで絞り込み、なければ全ての記事
     # JSONシリアライズするには、Querysetをリストにする必要あり
     user_queryset = CustomUser.objects.filter(last_login__isnull=False).exclude(id=request.user.id) # 自分以外の全ユーザー
-    print('user_queryset')
-    print(user_queryset)
-
     data=[]
     for user in  user_queryset:
         dict={
@@ -178,23 +144,19 @@ def ajax_UserSearchAll(request):
             "profile_photo_url":user.profile_photo.url
         }
         data.append(dict)
-    print("data")
-    print(data)
 
     d = {
         'user_list': data,
     }
-    print(d)
     return JsonResponse(d)
 
 #ユーザー検索（リクエストユーザー母語=学習言語）  ajax
+@login_required
 def ajax_UserSearchMother(request):
 
     # 検索キーワードがあればそれで絞り込み、なければ全ての記事
     # JSONシリアライズするには、Querysetをリストにする必要あり
     user_queryset = CustomUser.objects.filter(last_login__isnull=False, learn_language=request.user.mother_language).exclude(id=request.user.id)
-    print('user_queryset')
-    print(user_queryset)
 
     data=[]
     for user in  user_queryset:
@@ -207,23 +169,18 @@ def ajax_UserSearchMother(request):
             "profile_photo_url":user.profile_photo.url
         }
         data.append(dict)
-    print("data")
-    print(data)
-
     d = {
         'user_list': data,
     }
-    print(d)
     return JsonResponse(d)
 
 #ユーザー検索（リクエストユーザー学習言語=学習言語）  ajax
+@login_required
 def ajax_UserSearchLearn(request):
 
     # 検索キーワードがあればそれで絞り込み、なければ全ての記事
     # JSONシリアライズするには、Querysetをリストにする必要あり
     user_queryset = CustomUser.objects.filter(last_login__isnull=False, learn_language=request.user.learn_language).exclude(id=request.user.id)
-    print('user_queryset')
-    print(user_queryset)
 
     data=[]
     for user in  user_queryset:
@@ -236,11 +193,8 @@ def ajax_UserSearchLearn(request):
             "profile_photo_url":user.profile_photo.url
         }
         data.append(dict)
-    print("data")
-    print(data)
 
     d = {
         'user_list': data,
     }
-    print(d)
     return JsonResponse(d)
