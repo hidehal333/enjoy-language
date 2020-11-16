@@ -29,13 +29,14 @@ def diary_list(request):
     diary_list = Diary.objects.all().order_by('-created_at')
 
     #いいね
-    liked_dic={}
+    liked_list =[]
     for diary in diary_list:
         liked = False
 
         if diary.like.filter(id=request.user.id).exists():
             liked=True
-        liked_dic[diary.id]=liked
+        liked_list.append(liked)
+
 
     #ページネーション
     #1ページあたりの日記表示数
@@ -44,8 +45,16 @@ def diary_list(request):
     page_obj = paginate_queryset(request, diary_list, per_page)
     diary_list = page_obj.object_list
 
+    page_obj = paginate_queryset(request, liked_list, per_page)
+    liked_list = page_obj.object_list
 
-    return render(request, 'diary_list.html', {'diary_list':diary_list, 'liked_dic':liked_dic})
+    #テンプレート用に2つのクエリをセットにする。
+    items=[]
+    for item in zip(diary_list, liked_list):
+        items.append(item)
+
+
+    return render(request, 'diary_list.html', {'items':items,  'page_obj':page_obj})
 
 
 def paginate_queryset(request, queryset, count):

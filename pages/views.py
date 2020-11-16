@@ -48,13 +48,13 @@ def listview(request, pk):
     diary_list = Diary.objects.filter(user_id=pk).order_by('-created_at')
 
     #いいね
-    liked_dic={}
+    liked_list =[]
     for diary in diary_list:
         liked = False
 
         if diary.like.filter(id=request.user.id).exists():
             liked=True
-        liked_dic[diary.id]=liked
+        liked_list.append(liked)
 
     #ページネーション
     #1ページあたりの日記表示数
@@ -63,7 +63,15 @@ def listview(request, pk):
     page_obj = paginate_queryset(request, diary_list, per_page)
     diary_list = page_obj.object_list
 
-    return render(request, 'profile.html', {'profile_list':profile_list, 'diary_list':diary_list, 'liked_dic':liked_dic})
+    page_obj = paginate_queryset(request, liked_list, per_page)
+    liked_list = page_obj.object_list
+
+    #テンプレート用に2つのクエリをセットにする。
+    items=[]
+    for item in zip(diary_list, liked_list):
+        items.append(item)
+
+    return render(request, 'profile.html', {'profile_list':profile_list, 'items':items,  'page_obj':page_obj})
 
 def paginate_queryset(request, queryset, count):
     """Pageオブジェクトを返す。

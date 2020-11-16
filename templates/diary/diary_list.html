@@ -1,7 +1,8 @@
 {% load i18n %}
 {% load static %}
 
-{% for diary in diary_list %}
+{% for diary, liked in items %}
+
 <div class="card" >
   <!-- 投稿者の情報 -->
   <div class="card-header bg-transparent border-bottom-0">

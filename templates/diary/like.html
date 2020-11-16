@@ -5,10 +5,9 @@
      {% csrf_token %}
      {% if liked %}
       <!-- いいねを取り消す -->
-      <button type="submit"  id="like_{{diary.id}}" name="diary_id" value="{{diary.id}}" class="btn btn-danger like">{% trans "いいね" %} <span class="badge badge-light">{{diary.like.count}}</span></button>
+      <button type="submit"  name="diary_id" value="{{diary.id}}" class="btn btn-danger like">{% trans "いいね" %} <span class="badge badge-light">{{diary.like.count}}</span></button>
       {% else %}
       <!-- いいねをする -->
-      <button type="submit" id="like_{{diary.id}}" name="diary_id" value="{{diary.id}}" class="btn btn-light border-secondary like">{% trans "いいね" %} <span class="badge badge-light">{{diary.like.count}}</span></button>
+      <button type="submit"  name="diary_id" value="{{diary.id}}" class="btn btn-light border-secondary like">{% trans "いいね" %} <span class="badge badge-light">{{diary.like.count}}</span></button>
      {% endif %}
    </form>
- 
