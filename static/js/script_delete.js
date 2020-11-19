@@ -1,12 +1,13 @@
 // <!-- 日記削除 -->
-const deleteForm = document.getElementById('delete-form');
-const deleteModalButtons = document.getElementsByClassName('delete-modal-button');
+const deleteForm = document.getElementById('delete-form');//モーダル内
+const deleteModalButtons = document.getElementById('diarys');//日記一覧内
 
-for (const button of deleteModalButtons) {
-  button.addEventListener('click', () => {
-  deleteForm.action = button.dataset.deleteurl;
-  });
-}
+
+deleteModalButtons.addEventListener("click", (event) => {
+  if (event.target.classList.contains("delete-modal-button") === true ) {
+    deleteForm.action = event.target.dataset.deleteurl;
+  }
+});
 
 // <!-- コメント削除 -->
 const deleteCommentForm = document.getElementById('delete-comment-form');

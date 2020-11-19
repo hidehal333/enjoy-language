@@ -18,7 +18,8 @@ https://hidden-chamber-98460.herokuapp.com/
 
 # 使用技術
 Python:3.7.9, Django:3.1.1  
-Javascript  
+Javascript, Jquery
+PostgreSQL
 Bootstrap(css/Javascript/Jquery)  
 Docker(ローカル・本番環境)  
 Gunicorn  

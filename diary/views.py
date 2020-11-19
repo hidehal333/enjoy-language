@@ -6,7 +6,6 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import render_to_string
 from django.http import JsonResponse
 
-
 from .forms import DiaryCreateForm
 from django.urls import reverse_lazy
 from django.views import generic
@@ -220,3 +219,62 @@ def furigana(request):
             print(word, end="")
             text_content.append(word)
     return render(request, 'furigana_result.html', {'text_content':text_content})
+
+#ajax日記投稿
+def ajax_post_add(request):
+    if request.method == 'POST':
+        #画像ファイルのリストを取得(MultiValueDictから)
+        image_list=request.FILES.getlist('image')
+        #画像数
+        k = len(image_list)
+        #画像を取得
+        if k == 1:
+            posted_img1=image_list[0]
+            posted_img2 = None
+            posted_img3 = None
+        elif k ==2:
+            posted_img1=image_list[0]
+            posted_img2=image_list[1]
+            posted_img3 = None
+        elif k == 3:
+            posted_img1=image_list[0]
+            posted_img2=image_list[1]
+            posted_img3 =image_list[2]
+        else:
+            posted_img1 = None
+            posted_img2 = None
+            posted_img3 = None
+
+        #日記本文を取得
+        content = request.POST['content']
+
+        diary = Diary.objects.create(content=content, photo1=posted_img1, photo2=posted_img2, photo3=posted_img3, user=request.user)
+        #画像URLを取得
+        if diary.photo1:
+            photo1=diary.photo1.url
+        else:
+            photo1=None
+        if diary.photo2:
+            photo2=diary.photo2.url
+        else:
+            photo2=None
+        if diary.photo3:
+            photo3=diary.photo3.url
+        else:
+            photo3=None
+
+    d = {
+        "user_id":diary.user.id,
+        "nickname": diary.user.nickname,
+        "photo_url":diary.user.profile_photo.url,
+        "mother_language": diary.user.mother_language,
+        "learn_language": diary.user.learn_language,
+        "diary_id":diary.id,
+        "content":diary.content,
+        "created_at": diary.created_at,
+        "photo1": photo1,
+        "photo2": photo2,
+        "photo3": photo3,
+    }
+
+    return JsonResponse(d)
