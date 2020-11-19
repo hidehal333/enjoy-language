@@ -23,12 +23,13 @@ $('#ajax-user_search_all').click(function(e) {
     for (const user of response.user_list) {
       // htmlを追加
       // もし写真があるならば写真追加
+      let profile_url = "{% url 'pages:profile' 123456 %}".replace(/123456/, user.id);
       if(user.profile_photo_url) {
         const user_list = `
           <div class="info">
-              <p>
+          <a  href=${profile_url}>
                 <img src="${user.profile_photo_url}" width="50" height="50">  ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
-              </p>
+          </a>
           </div>
           <hr>`;
           $('#user_search').append(user_list);

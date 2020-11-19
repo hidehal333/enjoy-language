@@ -28,12 +28,12 @@
               </div>
               <div class="post-preview" id="user_search">
                 {% for user_item in user_search %}
-                <a class="nav-link" href="{% url 'pages:profile' user_item.pk %}"></a>
-                  <p>
+                <a class="nav-link" href="{% url 'pages:profile' user_item.pk %}">
                   {% if user_item.profile_photo %}
                       <img src="{{ user_item.profile_photo.url }}" width="50" height="50"/>
                   {% endif %}
-                  {{ user_item.nickname }}　{{ user_item.age }}　{{ user_item.get_mother_language_display }}→{{ user_item.get_learn_language_display }}</p>
+                  {{ user_item.nickname }}　{{ user_item.age }}　{{ user_item.get_mother_language_display }}→{{ user_item.get_learn_language_display }}
+                  </a>
                   <hr>
                   {% empty %}
                       <p>{% trans "該当するユーザーがいません。" %}</p>
@@ -102,12 +102,13 @@
       for (const user of response.user_list) {
         // htmlを追加
         // もし写真があるならば写真追加
+        let profile_url = "{% url 'pages:profile' 123456 %}".replace(/123456/, user.id);
         if(user.profile_photo_url) {
           const user_list = `
             <div class="info">
-                <p>
+            <a  href=${profile_url}>
                   <img src="${user.profile_photo_url}" width="50" height="50">  ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
-                </p>
+            </a>
             </div>
             <hr>`;
             $('#user_search').append(user_list);
@@ -115,9 +116,9 @@
         else {
           const user_list = `
           <div class="info">
-              <p>
+              <a  href=${profile_url}>
                  ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
-              </p>
+              </a>
           </div>
           `;
           $('#user_search').append(user_list);
@@ -145,27 +146,27 @@
 
      for (const user of response.user_list) {
        // htmlを追加
-        // もし写真があるならば写真追加
-        if(user.profile_photo_url) {
-            const user_list = `
-
-            <div class="info">
-                <p>
-                  <img src="${user.profile_photo_url}" width="50" height="50">  ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
-                </p>
-            </div>
-            <hr>`;
-            $('#user_search').append(user_list);
-        }
-        else {
-          const user_list = `
-          <div class="info">
-              <p>
-                 ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
-              </p>
-          </div>
-          `;
-          $('#user_search').append(user_list);
+       // もし写真があるならば写真追加
+       let profile_url = "{% url 'pages:profile' 123456 %}".replace(/123456/, user.id);
+       if(user.profile_photo_url) {
+         const user_list = `
+           <div class="info">
+           <a  href=${profile_url}>
+                 <img src="${user.profile_photo_url}" width="50" height="50">  ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
+           </a>
+           </div>
+           <hr>`;
+           $('#user_search').append(user_list);
+       }
+       else {
+         const user_list = `
+         <div class="info">
+             <a  href=${profile_url}>
+                ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
+             </a>
+         </div>
+         `;
+         $('#user_search').append(user_list);
         }
       }
     });
@@ -189,27 +190,27 @@
 
      for (const user of response.user_list) {
        // htmlを追加
-        // もし写真があるならば写真追加
-        if(user.profile_photo_url) {
-            const user_list = `
-
-            <div class="info">
-                <p>
-                  <img src="${user.profile_photo_url}" width="50" height="50">  ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
-                </p>
-            </div>
-            <hr>`;
-            $('#user_search').append(user_list);
-        }
-        else {
-          const user_list = `
-          <div class="info">
-              <p>
-                 ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
-              </p>
-          </div>
-          `;
-          $('#user_search').append(user_list);
+       // もし写真があるならば写真追加
+       let profile_url = "{% url 'pages:profile' 123456 %}".replace(/123456/, user.id);
+       if(user.profile_photo_url) {
+         const user_list = `
+           <div class="info">
+           <a  href=${profile_url}>
+                 <img src="${user.profile_photo_url}" width="50" height="50">  ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
+           </a>
+           </div>
+           <hr>`;
+           $('#user_search').append(user_list);
+       }
+       else {
+         const user_list = `
+         <div class="info">
+             <a  href=${profile_url}>
+                ${user.name}  ${user.ange}  ${user.mother_language}→${user.learn_language}
+             </a>
+         </div>
+         `;
+         $('#user_search').append(user_list);
         }
       }
     });
