@@ -223,6 +223,7 @@ def furigana(request):
 #ajax日記投稿
 def ajax_post_add(request):
     if request.method == 'POST':
+
         #画像ファイルのリストを取得(MultiValueDictから)
         image_list=request.FILES.getlist('image')
         #画像数

@@ -62,9 +62,6 @@
 {% endblock %}
 
 {% block extrajs %}
-<script src="{% static 'js/script.js' %}"></script>
-<script src="{% static 'js/script_delete.js' %}"></script>
-<!-- <script src="{% static 'js/script_create_diary.js' %}"></script> -->
 <script type="text/javascript">
   $(document).on('change', ':file', function() {
       var input = $(this),
@@ -263,8 +260,8 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
           });
 
 
-
 </script>
 
-
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/script_delete.js' %}"></script>
 {% endblock %}
