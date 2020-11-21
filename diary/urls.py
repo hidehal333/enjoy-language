@@ -13,4 +13,5 @@ urlpatterns =[
     path('translate/', views.translate, name='translate'),
     path('furigana/', views.furigana, name='furigana'),
     path('ajax_post_add/', views.ajax_post_add, name='ajax_post_add'),
+    path('ajax_post_delete/', views.ajax_post_delete, name='ajax_post_delete'),
 ]

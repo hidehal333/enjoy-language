@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, get_object_or_404, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import render_to_string
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 
 from .forms import DiaryCreateForm
 from django.urls import reverse_lazy
@@ -160,6 +160,23 @@ class DiaryDeleteView(LoginRequiredMixin, generic.DeleteView):
             return super().delete(request, *args, **kwargs)
         else:
             return redirect('diary:diary_list')
+
+#ajax日記削除
+@login_required
+def ajax_post_delete(request):
+    print(request)
+    print(request.POST)
+
+    if request.method == 'POST':
+        try:
+            diary = get_object_or_404(Diary, id=request.POST.get('diary_id'))
+        except Diary.DoesNotExist:
+            raise Http404
+        if request.user == diary.user:
+            diary.delete()
+            d = True
+        return HttpResponse(d)
+
 
 #翻訳する
 @login_required

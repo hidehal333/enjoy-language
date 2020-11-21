@@ -62,7 +62,7 @@
       <div class="col-auto text-right align-items-center mt-3 mb-3">
         <a class="btn btn-success " href="{% url 'diary:diary_update' diary.pk %}">{% trans "編集" %}</a>
         <!-- 日記削除ボタン -->
-        <button type="button" class="btn btn-danger delete-modal-button" data-toggle="modal" data-deleteurl="{% url 'diary:diary_delete' diary.pk %}" data-target="#modal_delete">
+        <button type="button" class="btn btn-danger delete-modal-button" data-toggle="modal" data-diary_id="{{diary.id}}" data-target="#modal_delete">
           {% trans "削除" %}
         </button>
       </div>
