@@ -104,8 +104,19 @@ def like(request):
     else:
        diary.like.add(request.user)
        liked = True
+    likes= len(diary.like.all())
 
-    return redirect('diary:diary_list')
+    # return redirect('diary:diary_list')
+    context={
+       'diary_id': diary.id,
+       'liked': liked,
+       'likes':likes
+       }
+    print(context)
+    # if request.is_ajax():
+    html = render_to_string('diary/like.html', context, request=request )
+    print(html)
+    return JsonResponse({ 'context':context})
 
 
 #日記作成ページ

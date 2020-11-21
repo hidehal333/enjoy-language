@@ -3,11 +3,13 @@
 
    <form action="{% url 'diary:like' %}" method="POST">
      {% csrf_token %}
+     <div id =liked >
      {% if liked %}
-      <!-- いいねを取り消す -->
+      <!-- いいねを取り消す ボタン赤色　いいね済み-->
       <button type="submit"  name="diary_id" value="{{diary.id}}" class="btn btn-danger like">{% trans "いいね" %} <span class="badge badge-light">{{diary.like.count}}</span></button>
       {% else %}
-      <!-- いいねをする -->
+      <!-- いいねをする ボタン白色　まだいいねしていない-->
       <button type="submit"  name="diary_id" value="{{diary.id}}" class="btn btn-light border-secondary like">{% trans "いいね" %} <span class="badge badge-light">{{diary.like.count}}</span></button>
      {% endif %}
+    </div>
    </form>

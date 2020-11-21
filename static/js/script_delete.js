@@ -1,7 +1,6 @@
 // <!-- 日記削除 -->
-const deleteForm = document.getElementById('delete-form');//モーダル内
 const deleteModalButtons = document.getElementById('diarys');//日記一覧内
-
+const deleteForm = document.getElementById('delete-form');//モーダル内
 
 deleteModalButtons.addEventListener("click", (event) => {
     const modal = document.getElementById('modal_delete');

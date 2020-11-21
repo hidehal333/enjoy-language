@@ -310,10 +310,60 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
 
 
 </script>
+
+<!-- いいね -->
+<script type="text/javascript">
+  const LikeButtons = document.getElementById('diarys');//いいねボタン
+
+  LikeButtons.addEventListener("click", (event) => {
+    console.log(event.target);
+    const div_liked = event.target.closest('#liked');
+    console.log("div_liked");
+
+
+    if (event.target.classList.contains("like") === true ) {
+      event.preventDefault();
+
+
+    var diary_id = event.target.getAttribute("value");
+    console.log(diary_id);
+      $.ajax({
+          url: '{% url "diary:like" %}',
+          type: 'POST',
+          data: {
+            'diary_id': diary_id,
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+          }
+      //ajax成功
+      }).done( response => {
+        console.log(response);
+        let diary_id =response["context"]["diary_id"];
+        let liked =response["context"]["liked"];
+        let likes = response["context"]["likes"];
+
+          // HTMLを変更
+        console.log(diary_id);
+        console.log(liked);
+
+        if(liked){
+          html=`<button type="submit"  name="diary_id" value="${diary_id}" class="btn btn-danger like">{% trans "いいね" %} <span class="badge badge-light">${likes}</span></button>`
+        }
+        else{
+          html=` <button type="submit"  name="diary_id" value="${diary_id}" class="btn btn-light border-secondary like">{% trans "いいね" %} <span class="badge badge-light">${likes}</span></button>`
+        }
+
+          div_liked.innerHTML=html
+            });
+          };
+  });
+
+
+</script>
+
+
 <script type="text/javascript">
   var ajax_post_delete_url = '{% url "diary:ajax_post_delete" %}';
 </script>
-
 
 <script src="{% static 'js/script.js' %}"></script>
 <script src="{% static 'js/script_delete.js' %}"></script>
