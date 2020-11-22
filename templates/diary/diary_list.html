@@ -37,6 +37,8 @@
     <p class="card-text">{{ diary.content }}</p>
     <!-- 翻訳後テキスト -->
     <div class="translated text-danger"></div>
+    <!-- ふりがな付きキスト -->
+    <div class="with-furigana text-primary"></div>
   </div>
   <!-- 日記写真（あれば表示、最大3） -->
   {% if diary.photo1 %}
@@ -81,6 +83,10 @@
       <!-- 翻訳をする -->
       <div class="col">
       {% include 'diary/translate.html' %}
+      </div>
+      <!-- ふりがなを付ける -->
+      <div class="col">
+      {% include 'diary/furigana.html' %}
       </div>
     </div>
     <!-- コメントリスト -->

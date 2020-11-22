@@ -1,11 +1,11 @@
 {% load i18n %}
 
 {% if request.user.is_authenticated %}
-   <form action="{% url 'diary:translate' %}" method="POST" target="_blank" name="form1">
+   <form action="{% url 'diary:translate' %}" method="POST"  name="form1">
      {% csrf_token %}
      <!-- 元の言語 -->
      <!-- 翻訳する言語 -->
       <!-- 翻訳をする -->
-      <button type="submit"  class="translate" name="diary_id" value="{{diary.id}}" class="btn btn-light border-secondary translate">{% trans "日本語を英語に翻訳" %} </button>
+      <button type="submit"  name="diary_id" value="{{diary.id}}" class="btn btn-light border-secondary translate">{% trans "日本語を英語に翻訳" %} </button>
    </form>
  {% endif %}

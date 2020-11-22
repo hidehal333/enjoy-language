@@ -209,6 +209,20 @@ def translate(request):
     else:
         return render(request, 'translate_no_result.html')
 
+#翻訳ページスクレイピング
+def get_soup(url):
+    try:
+        # データ取得
+        resp = requests.get(url)
+        print(resp)
+        resp.encoding = resp.apparent_encoding
+        # 要素の抽出
+        soup = BeautifulSoup(resp.text, "html.parser")
+        print(soup)
+        return soup
+    except Exception as e:
+        return print("スクレイピングできませんでした。")
+
 
 #ふりがな
 @login_required
@@ -243,14 +257,12 @@ def furigana(request):
     text_content=[]
     for word in text:
         if word in list(ruby_dict.keys()):
-            print("<ruby>{}<rp>".format(word), end="")
             text_content.append("<ruby>{}<rp>".format(word))
             text_content.append("（</rp><rt>{}</rt><rp>）</rp></ruby>".format(ruby_dict[word]))
-            print("（</rp><rt>{}</rt><rp>）</rp></ruby>".format(ruby_dict[word]), end="")
         else:
-            print(word, end="")
             text_content.append(word)
-    return render(request, 'furigana_result.html', {'text_content':text_content})
+    return HttpResponse(text_content)
+
 
 #ajax日記投稿
 def ajax_post_add(request):
@@ -311,17 +323,3 @@ def ajax_post_add(request):
     }
 
     return JsonResponse(d)
-
-#翻訳ページスクレイピング
-def get_soup(url):
-    try:
-        # データ取得
-        resp = requests.get(url)
-        print(resp)
-        resp.encoding = resp.apparent_encoding
-        # 要素の抽出
-        soup = BeautifulSoup(resp.text, "html.parser")
-        print(soup)
-        return soup
-    except Exception as e:
-        return print("スクレイピングできませんでした。")

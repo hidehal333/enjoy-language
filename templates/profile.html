@@ -316,9 +316,7 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
   const LikeButtons = document.getElementById('diarys');//いいねボタン
 
   LikeButtons.addEventListener("click", (event) => {
-    console.log(event.target);
     const div_liked = event.target.closest('#liked');
-    console.log("div_liked");
 
 
     if (event.target.classList.contains("like") === true ) {
@@ -326,7 +324,6 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
 
 
     var diary_id = event.target.getAttribute("value");
-    console.log(diary_id);
       $.ajax({
           url: '{% url "diary:like" %}',
           type: 'POST',
@@ -336,14 +333,11 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
           }
       //ajax成功
       }).done( response => {
-        console.log(response);
         let diary_id =response["context"]["diary_id"];
         let liked =response["context"]["liked"];
         let likes = response["context"]["likes"];
 
           // HTMLを変更
-        console.log(diary_id);
-        console.log(liked);
 
         if(liked){
           html=`<button type="submit"  name="diary_id" value="${diary_id}" class="btn btn-danger like">{% trans "いいね" %} <span class="badge badge-light">${likes}</span></button>`
@@ -365,7 +359,6 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
   const translateButtons = document.getElementById('diarys');//翻訳ボタンの親要素
 
   translateButtons.addEventListener("click", (event) => {
-    console.log(event.target);
     const div_card = event.target.closest('.card');
     let div_translated = div_card.getElementsByClassName('translated');
 
@@ -373,7 +366,7 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
     if (event.target.classList.contains("translate") === true ) {
       event.preventDefault();
 
-    var diary_id = event.target.getAttribute("value");
+      var diary_id = event.target.getAttribute("value");
 
       $.ajax({
           url: '{% url "diary:translate" %}',
@@ -388,6 +381,41 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
 
         // HTMLを変更
         div_translated[0].innerHTML=`${translated}`
+
+            });
+          };
+  });
+
+</script>
+
+<!-- ふりがな -->
+<script type="text/javascript">
+  const furiganaButtons = document.getElementById('diarys');//ふりがなボタンの親要素
+
+  furiganaButtons.addEventListener("click", (event) => {
+    const div_card = event.target.closest('.card');
+    let div_furigana = div_card.getElementsByClassName('with-furigana');
+
+
+    if (event.target.classList.contains("furigana") === true ) {
+      event.preventDefault();
+
+      var diary_id = event.target.getAttribute("value");
+
+      $.ajax({
+          url: '{% url "diary:furigana" %}',
+          type: 'POST',
+          data: {
+            'diary_id': diary_id,
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+          }
+      //ajax成功
+      }).done( response => {
+
+        let  text_content =response;
+
+        // HTMLを変更
+        div_furigana[0].innerHTML=`${text_content}`
 
             });
           };
