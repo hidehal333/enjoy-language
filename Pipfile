@@ -16,6 +16,9 @@ dj-database-url = "*"
 django-storages = "*"
 boto3 = "*"
 django-cloudinary-storage = "*"
+requests = "*"
+beautifulsoup4 = "*"
+bs4 = "*"
 
 [dev-packages]
 

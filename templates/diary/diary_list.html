@@ -35,6 +35,8 @@
   <div class="card-body">
     <!-- 日記のテキスト情報（タイトルはなし）　抜粋 -->
     <p class="card-text">{{ diary.content }}</p>
+    <!-- 翻訳後テキスト -->
+    <div class="translated text-danger"></div>
   </div>
   <!-- 日記写真（あれば表示、最大3） -->
   {% if diary.photo1 %}

@@ -18,6 +18,7 @@ from .models import Diary
 from itertools import chain
 
 import requests
+from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 
 
@@ -195,15 +196,18 @@ def translate(request):
     diary = get_object_or_404(Diary, id=request.POST.get('diary_id'))
     #diaryから内容を取得
     content= diary.content
-    #URLを作る
+    print(content)
+    #翻訳用URLを作作成
     if content:
         url = "https://script.google.com/macros/s/AKfycbwU1c-SrdusLY-cjzAKbwnoXB8r2qBwjOwXjqj7c_zS4nIW74s/exec?text=" + content+ "&source=ja&target=en"
+        soup = get_soup(url)
         print("url")
         print(url)
-        return render(request, 'translate_result.html', {'url':url})
+        print(soup)
+
+        return HttpResponse(soup)
     else:
         return render(request, 'translate_no_result.html')
-        #return redirect('translate_no_result.html')
 
 
 #ふりがな
@@ -307,3 +311,17 @@ def ajax_post_add(request):
     }
 
     return JsonResponse(d)
+
+#翻訳ページスクレイピング
+def get_soup(url):
+    try:
+        # データ取得
+        resp = requests.get(url)
+        print(resp)
+        resp.encoding = resp.apparent_encoding
+        # 要素の抽出
+        soup = BeautifulSoup(resp.text, "html.parser")
+        print(soup)
+        return soup
+    except Exception as e:
+        return print("スクレイピングできませんでした。")

@@ -271,14 +271,10 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
   const LikeButtons = document.getElementById('diarys');//いいねボタン
 
   LikeButtons.addEventListener("click", (event) => {
-    console.log(event.target);
     const div_liked = event.target.closest('#liked');
-    console.log("div_liked");
-
 
     if (event.target.classList.contains("like") === true ) {
       event.preventDefault();
-
 
     var diary_id = event.target.getAttribute("value");
     console.log(diary_id);
@@ -311,7 +307,40 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
             });
           };
   });
+</script>
 
+<!-- 翻訳 -->
+<script type="text/javascript">
+  const translateButtons = document.getElementById('diarys');//翻訳ボタンの親要素
+
+  translateButtons.addEventListener("click", (event) => {
+    console.log(event.target);
+    const div_card = event.target.closest('.card');
+    let div_translated = div_card.getElementsByClassName('translated');
+
+
+    if (event.target.classList.contains("translate") === true ) {
+      event.preventDefault();
+
+    var diary_id = event.target.getAttribute("value");
+
+      $.ajax({
+          url: '{% url "diary:translate" %}',
+          type: 'POST',
+          data: {
+            'diary_id': diary_id,
+            'csrfmiddlewaretoken': '{{ csrf_token }}'
+          }
+      //ajax成功
+      }).done( response => {
+        let translated =response;
+
+        // HTMLを変更
+        div_translated[0].innerHTML=`${translated}`
+
+            });
+          };
+  });
 
 </script>
 
