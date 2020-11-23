@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-11-05 23:11+0900\n"
+"POT-Creation-Date: 2020-11-24 00:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,9 +26,9 @@ msgstr "Pengguna"
 msgid "日記"
 msgstr "Buku Harian"
 
-#: comments/models.py:12 templates/diary_detail.html:99
-#: templates/diary_list.html:88 templates/diary_list1.html:83
-#: templates/profile.html:134
+#: comments/models.py:12 templates/diary/diary_list.html:81
+#: templates/diary_detail.html:99 templates/diary_list.html:231
+#: templates/profile.html:279
 msgid "コメント"
 msgstr "comment"
 
@@ -60,15 +60,15 @@ msgstr "Foto3"
 msgid "更新日時"
 msgstr "Hari diperbarui"
 
-#: enjoy_language_project/settings.py:125
+#: enjoy_language/settings.py:132
 msgid "English"
 msgstr "Inggeris"
 
-#: enjoy_language_project/settings.py:126
+#: enjoy_language/settings.py:133
 msgid "Japanese"
 msgstr "Jepang"
 
-#: enjoy_language_project/settings.py:127
+#: enjoy_language/settings.py:134
 msgid "Indonesian"
 msgstr "Bahasa Indonesia"
 
@@ -128,27 +128,149 @@ msgstr "Error 500"
 msgid "想定外のエラーが発生しました。"
 msgstr "Terjadi sebuah kesalahan yang tidak diharapkan."
 
-#: templates/account/verification_sent1.html:5
-#: templates/account/verification_sent1.html:8
-msgid "Verify Your E-mail Address"
-msgstr "Verifikasi alamat email Anda"
+#: templates/account/email/email_confirmation_message.txt:3
+#, python-format
+msgid ""
+"\n"
+"ご登録ありがとうございます。\n"
+"登録を続けるには、以下のリンクをクリックしてください。\n"
+"%(activate_url)s\n"
+msgstr ""
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "ユーザー登録確認メール"
+msgstr "Email konfirmasi pendaftaran pengguna"
+
+#: templates/account/email/password_reset_key_message.txt:3
+#, python-format
+msgid ""
+"\n"
+"パスワードリセットが申請されました。処理を続けるには、以下のリンクをクリック"
+"してください。\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+msgstr ""
+
+#: templates/account/email/password_reset_key_subject.txt:3
+#: templates/account/password_reset.html:3
+#: templates/account/password_reset_done.html:9
+#: templates/account/password_reset_from_key.html:3
+#: templates/account/password_reset_from_key.html:9
+msgid "パスワードリセット"
+msgstr "reset password"
+
+#: templates/account/email_confirm.html:12
+
+msgid "ユーザー登録"
+msgstr "pendaftaran pengguna"
+
+#: templates/account/email_confirm.html:16
+msgid "ユーザー登録を確定するには、以下のボタンを押してください。"
+msgstr "Untuk mengonfirmasi pendaftaran pengguna Anda, klik tombol di bawah ini."
+
+#: templates/account/email_confirm.html:20
+msgid "確定"
+msgstr "Konfirmasi"
+
+#: templates/account/email_confirm.html:27
+msgid "リンクの有効期限が過ぎています。"
+msgstr "Tautan sudah kedaluwarsa"
+
+#: templates/account/email_confirm.html:27
+msgid "再申請"
+msgstr "Melamar lagi"
+
+#: templates/account/login.html:21
+msgid "ログイン"
+msgstr "Login"
+
+#: templates/account/login.html:22
+msgid "パスワードを忘れましたか？"
+msgstr "Apakah Anda lupa kata sandi Anda?"
+
+#: templates/account/password_reset.html:14
+msgid "パスワードリセット用メールを送信します。"
+msgstr "Kirim email pengaturan ulang kata sandi."
+
+#: templates/account/password_reset.html:21 templates/inquiry.html:31
+msgid "送信"
+msgstr "Kirim"
+
+#: templates/account/password_reset_done.html:3
+msgid "Password reset done"
+msgstr ""
+
+#: templates/account/password_reset_done.html:15
+msgid "パスワードリセット用のメールを送信しました。"
+msgstr "Saya mengirim email untuk mengatur ulang kata sandi saya."
+
+#: templates/account/password_reset_from_key.html:9
+msgid "不正トークン"
+msgstr "Token ilegal"
+
+#: templates/account/password_reset_from_key.html:13
+msgid "このパスワードリセット用リンクは無効になっています。"
+msgstr "Tautan pengaturan ulang kata sandi ini dinonaktifkan."
+
+#: templates/account/password_reset_from_key.html:13
+msgid "パスワードリセット再申請"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:19
+msgid "変更"
+msgstr "Ajukan permohonan ulang kata sandi"
+
+#: templates/account/password_reset_from_key.html:22
+msgid "パスワードは変更されています。"
+msgstr "Kata sandi telah berubah."
+
+#: templates/account/signup.html:3 templates/account/signup.html:11
+msgid "サインアップ"
+msgstr "SignUp"
+
+#: templates/account/signup.html:21
+msgid "登録"
+msgstr "Registrasi"
+
+#: templates/account/verification_sent.html:9
+msgid "確認のメールを送信しました。"
+msgstr "email konfirmasi dikirim."
+
+#: templates/account/verification_sent.html:11
+msgid ""
+"メールに記載されたリンクをクリックして、ユーザー登録を完了させてください。"
+msgstr "Klik link di email untuk menyelesaikan pendaftaran pengguna Anda."
+
+#: templates/account/verification_sent.html:13
+#: templates/account/verification_sent0.html:11
+msgid "数分待っても確認のメールが届かない場合はご連絡ください。"
+msgstr "Jika Anda tidak menerima email konfirmasi setelah menunggu beberapa menit, silakan hubungi kami."
+
+#: templates/account/verification_sent0.html:9
+msgid ""
+"確認のメールを送信しました。メールに記載されたリンクをクリックして、ユーザー"
+"登録を完了させてください。"
+msgstr "email konfirmasi dikirim. Klik link di email dan pengguna Harap selesaikan pendaftaran."
+
+
 
 #: templates/account/verification_sent1.html:10
 msgid ""
 "We have sent an e-mail to you for verification. Follow the link provided to "
 "finalize the signup process. Please contact us if you do not receive it "
 "within a few minutes."
-msgstr ""
+msgstr "Kami telah mengirimkan email kepada Anda untuk verifikasi. Ikuti tautan yang diberikan untuk menyelesaikan proses pendaftaran. Silakan hubungi kami jika Anda tidak menerimanya dalam beberapa menit."
 
-#: templates/base.html:52
+#: templates/base.html:53
 msgid "Profile"
 msgstr ""
 
-#: templates/base.html:55 templates/home.html:78
+#: templates/base.html:56 templates/home.html:79
 msgid "ユーザー検索"
 msgstr "Pencarian pengguna"
 
-#: templates/base.html:101
+#: templates/base.html:102
 msgid "お問い合わせ"
 msgstr "Hubungi"
 
@@ -168,27 +290,61 @@ msgstr "Hapus Comment"
 msgid "本当に削除しますか？"
 msgstr "Anda yakin ingin menghapus ini?"
 
-#: templates/comments_delete.html:17 templates/diary_delete.html:16
+#: templates/comments_delete.html:17 templates/diary/diary_list.html:70
+#: templates/diary/diary_list.html:121 templates/diary_delete.html:16
 #: templates/diary_detail.html:117 templates/diary_detail.html:130
-#: templates/diary_list.html:95 templates/diary_list.html:127
-#: templates/profile.html:141 templates/profile.html:172
+#: templates/diary_list.html:210 templates/profile.html:258
 msgid "削除"
 msgstr "Hapus"
 
-#: templates/comments_delete.html:18 templates/diary_delete.html:17
+#: templates/comments_delete.html:18 templates/diary/diary_list.html:177
+#: templates/diary/diary_list.html:201 templates/diary_delete.html:17
 #: templates/diary_update.html:19 templates/profile_change.html:19
 msgid "キャンセル"
 msgstr "Membatalkan"
+
+#: templates/diary/diary_list.html:67 templates/diary_detail.html:128
+#: templates/diary_list.html:207 templates/profile.html:255
+msgid "編集"
+msgstr "Edit"
+
+#: templates/diary/diary_list.html:148
+msgid "日記がありません。"
+msgstr "Tidak ada Buku Harian."
+
+#: templates/diary/diary_list.html:163
+msgid "日記を削除"
+msgstr ""
+
+#: templates/diary/diary_list.html:169
+msgid "この日記を本当に削除しますか？"
+msgstr "Anda yakin ingin menghapus ini?"
+
+#: templates/diary/diary_list.html:178 templates/diary/diary_list.html:202
+msgid "本当に削除"
+msgstr "Anda yakin ingin menghapus ini?"
+
+#: templates/diary/diary_list.html:190
+msgid "コメントを削除"
+msgstr "comment"
+
+#: templates/diary/diary_list.html:196
+msgid "このコメントを本当に削除しますか？"
+msgstr "Anda yakin ingin menghapus ini?"
 
 #: templates/diary/furigana.html:6
 msgid "ルビをふる"
 msgstr "Tampilan dalam hiragana"
 
-#: templates/diary/like.html:8 templates/diary/like.html:11
+#: templates/diary/like.html:9 templates/diary/like.html:12
+#: templates/diary_list.html:223 templates/diary_list.html:296
+#: templates/diary_list.html:299 templates/profile.html:271
+#: templates/profile.html:343 templates/profile.html:346
 msgid "いいね"
 msgstr "Suka"
 
-#: templates/diary/translate.html:9
+#: templates/diary/translate.html:9 templates/diary_list.html:241
+#: templates/profile.html:289
 msgid "日本語を英語に翻訳"
 msgstr "Terjemahkan Bahasa Jepang ke Bahasa Inggris"
 
@@ -216,26 +372,20 @@ msgstr "Tidak ada comment"
 msgid "記事にコメントする"
 msgstr "Tulis Comment"
 
-#: templates/diary_detail.html:128 templates/diary_list.html:92
-#: templates/profile.html:138
-msgid "編集"
-msgstr "Edit"
-
-#: templates/diary_list.html:5 templates/diary_list1.html:5
-#: templates/furigana_result.html:5 templates/translate_no_result.html:5
-#: templates/translate_result.html:5
+#: templates/diary_list.html:5 templates/furigana_result.html:5
+#: templates/translate_no_result.html:5 templates/translate_result.html:5
 msgid "みんなの日記| Enjoy Language"
 msgstr "Buku Harian Teman2"
 
-#: templates/diary_list.html:19 templates/diary_list1.html:19
-#: templates/profile.html:70
-msgid "日記を書く"
+#: templates/diary_list.html:21
+#, fuzzy
+#| msgid "日記を書く"
+msgid "日記を書こう!"
 msgstr "Tulis Buku Harian"
 
-#: templates/diary_list.html:153 templates/diary_list1.html:133
-#: templates/profile.html:197
-msgid "日記がありません。"
-msgstr "Tidak ada Buku Harian."
+#: templates/diary_list.html:35 templates/profile.html:86
+msgid "投稿"
+msgstr "Kirim"
 
 #: templates/diary_update.html:5
 msgid "日記編集 | Enjoy Language"
@@ -257,33 +407,29 @@ msgstr "Ayo Nikmati Bahasa"
 msgid "世界の仲間と学ぼう"
 msgstr "Belajar sama Teman Dunia"
 
-#: templates/home.html:41
-msgid "みんなの日記"
-msgstr "Buku Harian Teman2"
-
 #: templates/home.html:42
+msgid "Friends Diary"
+msgstr "Tulis Buku Harian"
+
+#: templates/home.html:43
 msgid "仲間の投稿を見て言語を学ぼう"
 msgstr "Belajar bahasa dengan melihat kiriman teman-teman"
 
-#: templates/home.html:59
+#: templates/home.html:60
 msgid "Write Your Diary"
 msgstr "Tulis Buku Harian"
 
-#: templates/home.html:60
+#: templates/home.html:61
 msgid "あなたの日記を投稿しよう"
 msgstr "Bagikan kehidupan sehari-hari Anda"
 
-#: templates/home.html:77
+#: templates/home.html:78
 msgid "Find Friends"
 msgstr "Cari Teman"
 
 #: templates/inquiry.html:5
 msgid "お問い合わせ | Enjoy Language"
 msgstr "Hubungi"
-
-#: templates/inquiry.html:31
-msgid "送信"
-msgstr "Kirim"
 
 #: templates/profile.html:5
 msgid "プロフィール | Enjoy Language"
@@ -317,47 +463,38 @@ msgstr "Belajar Bahasa"
 msgid "自己紹介： "
 msgstr "Pengenalan diri: "
 
+#: templates/profile.html:72
+msgid "日記を書こう！"
+msgstr "Tulis Buku Harian"
+
 #: templates/profile_change.html:5
 msgid "プロフィールの編集 | Enjoy Language"
 msgstr "Edit Profile | Enjoy Language"
 
-#: templates/user_search_all.html:5 templates/user_search_ll.html:5
-#: templates/user_search_ml.html:5
-msgid "ユーザー検索(全ユーザー)| Enjoy Language"
+#: templates/translate_no_result.html:18
+msgid "この文章は翻訳できません。"
+msgstr "Kalimat ini tidak dapat diterjemahkan."
+
+
+#: templates/user_search.html:5
+msgid "ユーザー検索| Enjoy Language"
 msgstr "Pencarian pengguna (semua pengguna) | Enjoy Language"
 
-#: templates/user_search_all.html:18
-msgid "  全ユーザー　"
-msgstr "Semua User"
-
-#: templates/user_search_all.html:18 templates/user_search_ll.html:18
-msgid "学習を手伝おう　"
-msgstr "Bantu Belajar"
-
-#: templates/user_search_all.html:18 templates/user_search_ll.html:18
-msgid "　学習仲間"
-msgstr "Rekan belajar"
-
-#: templates/user_search_all.html:33 templates/user_search_ll.html:33
-#: templates/user_search_ml.html:33
-msgid "該当するユーザーがいません。"
-msgstr "Tidak ada pengguna yang berlaku"
-
-#: templates/user_search_ll.html:18
-msgid "全ユーザー　"
-msgstr "Semua Pengguna"
-
-#: templates/user_search_ml.html:18
+#: templates/user_search.html:20
 msgid "全ユーザー"
 msgstr "Semua Pengguna"
 
-#: templates/user_search_ml.html:18
-msgid "　学習を手伝おう　"
+#: templates/user_search.html:23
+msgid "学習を手伝おう"
 msgstr "Bantu Belajar"
 
-#: templates/user_search_ml.html:18
+#: templates/user_search.html:26
 msgid "学習仲間"
 msgstr "Rekan Belajar"
+
+#: templates/user_search.html:39
+msgid "該当するユーザーがいません。"
+msgstr "Tidak ada pengguna yang berlaku"
 
 #: users/models.py:10
 msgid "日本語"
@@ -397,11 +534,11 @@ msgstr "Belajar Bahasa"
 
 #: users/models.py:24
 msgid "性別"
-msgstr ""
+msgstr "Sex"
 
 #: users/models.py:25
 msgid "年齢"
-msgstr "seks"
+msgstr "Umur"
 
 #: users/models.py:26
 msgid "自己紹介"
@@ -410,6 +547,24 @@ msgstr "自己紹介"
 #: users/models.py:27
 msgid "プロフィール写真"
 msgstr "Foto Profile"
+
+#~ msgid "Verify Your E-mail Address"
+#~ msgstr "Verifikasi alamat email Anda"
+
+#~ msgid "みんなの日記"
+#~ msgstr "Buku Harian Teman2"
+
+#~ msgid "  全ユーザー　"
+#~ msgstr "Semua User"
+
+#~ msgid "　学習仲間"
+#~ msgstr "Rekan belajar"
+
+#~ msgid "全ユーザー　"
+#~ msgstr "Semua Pengguna"
+
+#~ msgid "　学習を手伝おう　"
+#~ msgstr "Bantu Belajar"
 
 #~ msgid "Hello"
 #~ msgstr "Halo"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-27 11:43+0900\n"
+"POT-Creation-Date: 2020-11-24 00:07+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,45 +18,238 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: el_project/settings.py:131
+#: comments/models.py:10 diary/models.py:10
+msgid "ユーザー"
+msgstr ""
+
+#: comments/models.py:11
+msgid "日記"
+msgstr ""
+
+#: comments/models.py:12 templates/diary/diary_list.html:81
+#: templates/diary_detail.html:99 templates/diary_list.html:231
+#: templates/profile.html:279
+msgid "コメント"
+msgstr ""
+
+#: comments/models.py:13 templates/diary_detail.html:56
+msgid "写真"
+msgstr ""
+
+#: comments/models.py:14 diary/models.py:15 templates/diary_detail.html:79
+msgid "作成日時"
+msgstr ""
+
+#: diary/models.py:11 templates/diary_detail.html:45
+msgid "本文"
+msgstr ""
+
+#: diary/models.py:12
+msgid "写真1"
+msgstr ""
+
+#: diary/models.py:13
+msgid "写真2"
+msgstr ""
+
+#: diary/models.py:14
+msgid "写真3"
+msgstr ""
+
+#: diary/models.py:16 templates/diary_detail.html:90
+msgid "更新日時"
+msgstr ""
+
+#: enjoy_language/settings.py:132
 msgid "English"
 msgstr "英語"
 
-#: el_project/settings.py:132
+#: enjoy_language/settings.py:133
 msgid "Japanese"
 msgstr "日本語"
 
-#: el_project/settings.py:133
+#: enjoy_language/settings.py:134
 msgid "Indonesian"
 msgstr "インドネシア語"
 
-#: templates/403.html:4
+#: pages/forms.py:8
+msgid "お名前"
+msgstr ""
+
+#: pages/forms.py:9
+msgid "メールアドレス"
+msgstr ""
+
+#: pages/forms.py:10 templates/diary_detail.html:34
+msgid "タイトル"
+msgstr ""
+
+#: pages/forms.py:11
+msgid "メッセージ"
+msgstr ""
+
+#: pages/forms.py:17
+msgid "お名前をここに入力してください。"
+msgstr ""
+
+#: pages/forms.py:20
+msgid "メールアドレスをここに入力してください。"
+msgstr ""
+
+#: pages/forms.py:23
+msgid "タイトルをここに入力してください。"
+msgstr ""
+
+#: pages/forms.py:26
+msgid "メッセージをここに入力してください。"
+msgstr ""
+
+#: templates/403.html:5
 msgid "403エラー | Enjoy Language"
 msgstr ""
 
-#: templates/403.html:10
+#: templates/403.html:11
 msgid "アクセス権限がありません。"
 msgstr ""
 
-#: templates/404.html:5
+#: templates/404.html:6
 msgid "404エラー | Enjoy Language"
 msgstr ""
 
-#: templates/404.html:11
+#: templates/404.html:12
 msgid "ページが見つかりませんでした。"
 msgstr ""
 
-#: templates/500.html:3
+#: templates/500.html:5
 msgid "500エラー | Enjoy Language"
 msgstr ""
 
-#: templates/500.html:9
+#: templates/500.html:11
 msgid "想定外のエラーが発生しました。"
 msgstr ""
 
-#: templates/account/verification_sent1.html:5
-#: templates/account/verification_sent1.html:8
-msgid "Verify Your E-mail Address"
+#: templates/account/email/email_confirmation_message.txt:3
+#, python-format
+msgid ""
+"\n"
+"ご登録ありがとうございます。\n"
+"登録を続けるには、以下のリンクをクリックしてください。\n"
+"%(activate_url)s\n"
+msgstr ""
+
+#: templates/account/email/email_confirmation_subject.txt:3
+msgid "ユーザー登録確認メール"
+msgstr ""
+
+#: templates/account/email/password_reset_key_message.txt:3
+#, python-format
+msgid ""
+"\n"
+"パスワードリセットが申請されました。処理を続けるには、以下のリンクをクリック"
+"してください。\n"
+"\n"
+"%(password_reset_url)s\n"
+"\n"
+msgstr ""
+
+#: templates/account/email/password_reset_key_subject.txt:3
+#: templates/account/password_reset.html:3
+#: templates/account/password_reset_done.html:9
+#: templates/account/password_reset_from_key.html:3
+#: templates/account/password_reset_from_key.html:9
+msgid "パスワードリセット"
+msgstr ""
+
+#: templates/account/email_confirm.html:12
+msgid "ユーザー登録"
+msgstr ""
+
+#: templates/account/email_confirm.html:16
+msgid "ユーザー登録を確定するには、以下のボタンを押してください。"
+msgstr ""
+
+#: templates/account/email_confirm.html:20
+msgid "確定"
+msgstr ""
+
+#: templates/account/email_confirm.html:27
+msgid "リンクの有効期限が過ぎています。"
+msgstr ""
+
+#: templates/account/email_confirm.html:27
+msgid "再申請"
+msgstr ""
+
+#: templates/account/login.html:21
+msgid "ログイン"
+msgstr ""
+
+#: templates/account/login.html:22
+msgid "パスワードを忘れましたか？"
+msgstr ""
+
+#: templates/account/password_reset.html:14
+msgid "パスワードリセット用メールを送信します。"
+msgstr ""
+
+#: templates/account/password_reset.html:21 templates/inquiry.html:31
+msgid "送信"
+msgstr ""
+
+#: templates/account/password_reset_done.html:3
+msgid "Password reset done"
+msgstr ""
+
+#: templates/account/password_reset_done.html:15
+msgid "パスワードリセット用のメールを送信しました。"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:9
+msgid "不正トークン"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:13
+msgid "このパスワードリセット用リンクは無効になっています。"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:13
+msgid "パスワードリセット再申請"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:19
+msgid "変更"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:22
+msgid "パスワードは変更されています。"
+msgstr ""
+
+#: templates/account/signup.html:3 templates/account/signup.html:11
+msgid "サインアップ"
+msgstr ""
+
+#: templates/account/signup.html:21
+msgid "登録"
+msgstr ""
+
+#: templates/account/verification_sent.html:9
+msgid "確認のメールを送信しました。"
+msgstr ""
+
+#: templates/account/verification_sent.html:11
+msgid ""
+"メールに記載されたリンクをクリックして、ユーザー登録を完了させてください。"
+msgstr ""
+
+#: templates/account/verification_sent.html:13
+#: templates/account/verification_sent0.html:11
+msgid "数分待っても確認のメールが届かない場合はご連絡ください。"
+msgstr ""
+
+#: templates/account/verification_sent0.html:9
+msgid ""
+"確認のメールを送信しました。メールに記載されたリンクをクリックして、ユーザー"
+"登録を完了させてください。"
 msgstr ""
 
 #: templates/account/verification_sent1.html:10
@@ -66,165 +259,174 @@ msgid ""
 "within a few minutes."
 msgstr ""
 
-#: templates/base.html:51 templates/home.html:43
-msgid "みんなの日記"
+#: templates/base.html:53
+msgid "Profile"
 msgstr ""
 
-#: templates/base.html:54
-msgid "Profile({{ user.nickname }})"
+#: templates/base.html:56 templates/home.html:79
+msgid "ユーザー検索"
 msgstr ""
 
-#: templates/base.html:114
+#: templates/base.html:102
 msgid "お問い合わせ"
 msgstr ""
 
-#: templates/comments_create.html:4
+#: templates/comments_create.html:5
 msgid "コメント作成 | Enjoy Language"
 msgstr ""
 
-#: templates/comments_create.html:17 templates/diary_create.html:17
+#: templates/comments_create.html:18 templates/diary_create.html:18
 msgid "作成"
 msgstr ""
 
-#: templates/comments_create0.html:5
-msgid "コメントを書く | Enjoy Language"
-msgstr ""
-
-#: templates/comments_create0.html:23 templates/inquiry.html:31
-msgid "送信"
-msgstr ""
-
-#: templates/comments_create0.html:24
-msgid "送信せずに戻る"
-msgstr ""
-
-#: templates/comments_delete.html:4
+#: templates/comments_delete.html:6
 msgid "コメント削除 | Enjoy Language"
 msgstr ""
 
-#: templates/comments_delete.html:14 templates/diary_delete.html:14
+#: templates/comments_delete.html:16 templates/diary_delete.html:15
 msgid "本当に削除しますか？"
 msgstr ""
 
-#: templates/comments_delete.html:15 templates/diary_delete.html:15
-#: templates/diary_detail.html:116 templates/diary_detail.html:129
+#: templates/comments_delete.html:17 templates/diary/diary_list.html:70
+#: templates/diary/diary_list.html:121 templates/diary_delete.html:16
+#: templates/diary_detail.html:117 templates/diary_detail.html:130
+#: templates/diary_list.html:210 templates/profile.html:258
 msgid "削除"
 msgstr ""
 
-#: templates/comments_delete.html:16 templates/diary_delete.html:16
-#: templates/diary_update.html:18 templates/profile_change.html:18
+#: templates/comments_delete.html:18 templates/diary/diary_list.html:177
+#: templates/diary/diary_list.html:201 templates/diary_delete.html:17
+#: templates/diary_update.html:19 templates/profile_change.html:19
 msgid "キャンセル"
 msgstr ""
 
-#: templates/diary_create.html:4
-msgid "日記作成 | Enjoy Language"
-msgstr ""
-
-#: templates/diary_delete.html:4
-msgid "日記削除 | Enjoy Language"
-msgstr ""
-
-#: templates/diary_detail.html:4
-msgid "日記詳細 | Enjoy Language"
-msgstr ""
-
-#: templates/diary_detail.html:22
-msgid "プロフィール"
-msgstr ""
-
-#: templates/diary_detail.html:33
-msgid "タイトル"
-msgstr ""
-
-#: templates/diary_detail.html:44
-msgid "本文"
-msgstr ""
-
-#: templates/diary_detail.html:55
-msgid "写真"
-msgstr ""
-
-#: templates/diary_detail.html:78
-msgid "作成日時"
-msgstr ""
-
-#: templates/diary_detail.html:89
-msgid "更新日時"
-msgstr ""
-
-#: templates/diary_detail.html:122
-msgid "コメントがありません。"
-msgstr ""
-
-#: templates/diary_detail.html:125
-msgid "記事にコメントする"
-msgstr ""
-
-#: templates/diary_detail.html:127
+#: templates/diary/diary_list.html:67 templates/diary_detail.html:128
+#: templates/diary_list.html:207 templates/profile.html:255
 msgid "編集"
 msgstr ""
 
-#: templates/diary_list.html:4
-msgid "みんなの日記| Enjoy Language"
-msgstr ""
-
-#: templates/diary_list.html:18 templates/profile.html:36
-msgid "日記を書く"
-msgstr ""
-
-#: templates/diary_list.html:43 templates/profile.html:53
+#: templates/diary/diary_list.html:148
 msgid "日記がありません。"
 msgstr ""
 
-#: templates/diary_update.html:4
+#: templates/diary/diary_list.html:163
+msgid "日記を削除"
+msgstr ""
+
+#: templates/diary/diary_list.html:169
+msgid "この日記を本当に削除しますか？"
+msgstr ""
+
+#: templates/diary/diary_list.html:178 templates/diary/diary_list.html:202
+msgid "本当に削除"
+msgstr ""
+
+#: templates/diary/diary_list.html:190
+msgid "コメントを削除"
+msgstr ""
+
+#: templates/diary/diary_list.html:196
+msgid "このコメントを本当に削除しますか？"
+msgstr ""
+
+#: templates/diary/furigana.html:6
+msgid "ルビをふる"
+msgstr ""
+
+#: templates/diary/like.html:9 templates/diary/like.html:12
+#: templates/diary_list.html:223 templates/diary_list.html:296
+#: templates/diary_list.html:299 templates/profile.html:271
+#: templates/profile.html:343 templates/profile.html:346
+msgid "いいね"
+msgstr ""
+
+#: templates/diary/translate.html:9 templates/diary_list.html:241
+#: templates/profile.html:289
+msgid "日本語を英語に翻訳"
+msgstr ""
+
+#: templates/diary_create.html:5
+msgid "日記作成 | Enjoy Language"
+msgstr ""
+
+#: templates/diary_delete.html:5
+msgid "日記削除 | Enjoy Language"
+msgstr ""
+
+#: templates/diary_detail.html:5
+msgid "日記詳細 | Enjoy Language"
+msgstr ""
+
+#: templates/diary_detail.html:23
+msgid "プロフィール"
+msgstr ""
+
+#: templates/diary_detail.html:123
+msgid "コメントがありません。"
+msgstr ""
+
+#: templates/diary_detail.html:126
+msgid "記事にコメントする"
+msgstr ""
+
+#: templates/diary_list.html:5 templates/furigana_result.html:5
+#: templates/translate_no_result.html:5 templates/translate_result.html:5
+msgid "みんなの日記| Enjoy Language"
+msgstr ""
+
+#: templates/diary_list.html:21
+msgid "日記を書こう!"
+msgstr ""
+
+#: templates/diary_list.html:35 templates/profile.html:86
+msgid "投稿"
+msgstr ""
+
+#: templates/diary_update.html:5
 msgid "日記編集 | Enjoy Language"
 msgstr ""
 
-#: templates/diary_update.html:17 templates/profile_change.html:17
+#: templates/diary_update.html:18 templates/profile_change.html:18
 msgid "更新"
 msgstr ""
 
-#: templates/home.html:7
+#: templates/home.html:6
 msgid "言語を楽しもう！世界の仲間と言語を学び・教えあおう。"
 msgstr "言語を楽しもう！世界の仲間と言語を学び・教えあおう"
 
-#: templates/home.html:14
+#: templates/home.html:13
 msgid "言語を楽しもう！"
 msgstr "言語を楽しもう！"
 
-#: templates/home.html:15
+#: templates/home.html:14
 msgid "世界の仲間と学ぼう"
 msgstr "世界の仲間と学ぼう"
 
-#: templates/home.html:30
-msgid "Hello"
-msgstr "こんにちは。"
+#: templates/home.html:42
+msgid "Friends Diary"
+msgstr ""
 
-#: templates/home.html:44
+#: templates/home.html:43
 msgid "仲間の投稿を見て言語を学ぼう"
 msgstr ""
 
-#: templates/home.html:63
+#: templates/home.html:60
 msgid "Write Your Diary"
 msgstr ""
 
-#: templates/home.html:64
+#: templates/home.html:61
 msgid "あなたの日記を投稿しよう"
 msgstr ""
 
-#: templates/home.html:83
+#: templates/home.html:78
 msgid "Find Friends"
-msgstr ""
-
-#: templates/home.html:84
-msgid "ユーザー検索"
 msgstr ""
 
 #: templates/inquiry.html:5
 msgid "お問い合わせ | Enjoy Language"
 msgstr ""
 
-#: templates/profile.html:4
+#: templates/profile.html:5
 msgid "プロフィール | Enjoy Language"
 msgstr ""
 
@@ -232,68 +434,117 @@ msgstr ""
 msgid "プロフィールを編集"
 msgstr ""
 
-#: templates/profile.html:28
-msgid "名前: "
-msgstr ""
-
-#: templates/profile.html:28
+#: templates/profile.html:30
 msgid "登録日: "
 msgstr ""
 
-#: templates/profile.html:29
+#: templates/profile.html:34
+msgid "名前: "
+msgstr ""
+
+#: templates/profile.html:38
 msgid "年齢: "
 msgstr ""
 
-#: templates/profile.html:30
+#: templates/profile.html:43
 msgid "母語： "
 msgstr ""
 
-#: templates/profile.html:31
+#: templates/profile.html:48
 msgid "学習言語: "
 msgstr ""
 
-#: templates/profile.html:32
+#: templates/profile.html:53
 msgid "自己紹介： "
 msgstr ""
 
-#: templates/profile_change.html:4
+#: templates/profile.html:72
+msgid "日記を書こう！"
+msgstr ""
+
+#: templates/profile_change.html:5
 msgid "プロフィールの編集 | Enjoy Language"
 msgstr ""
 
-#: templates/user_search_all.html:4 templates/user_search_ll.html:4
-#: templates/user_search_ml.html:4
-msgid "ユーザー検索(全ユーザー)| Enjoy Language"
+#: templates/translate_no_result.html:18
+msgid "この文章は翻訳できません。"
 msgstr ""
 
-#: templates/user_search_all.html:17
-msgid "  全ユーザー　"
+#: templates/translate_result.html:18
+msgid "翻訳を表示する"
 msgstr ""
 
-#: templates/user_search_all.html:17 templates/user_search_ll.html:17
-msgid "学習を手伝おう　"
+#: templates/user_search.html:5
+msgid "ユーザー検索| Enjoy Language"
 msgstr ""
 
-#: templates/user_search_all.html:17 templates/user_search_ll.html:17
-msgid "　学習仲間"
-msgstr ""
-
-#: templates/user_search_all.html:32 templates/user_search_ll.html:32
-#: templates/user_search_ml.html:32
-msgid "該当するユーザーがいません。"
-msgstr ""
-
-#: templates/user_search_ll.html:17
-msgid "全ユーザー　"
-msgstr ""
-
-#: templates/user_search_ml.html:17
+#: templates/user_search.html:20
 msgid "全ユーザー"
 msgstr ""
 
-#: templates/user_search_ml.html:17
-msgid "　学習を手伝おう　"
+#: templates/user_search.html:23
+msgid "学習を手伝おう"
 msgstr ""
 
-#: templates/user_search_ml.html:17
+#: templates/user_search.html:26
 msgid "学習仲間"
 msgstr ""
+
+#: templates/user_search.html:39
+msgid "該当するユーザーがいません。"
+msgstr ""
+
+#: users/models.py:10
+msgid "日本語"
+msgstr ""
+
+#: users/models.py:11
+msgid "英語"
+msgstr ""
+
+#: users/models.py:12
+msgid "インドネシア語"
+msgstr ""
+
+#: users/models.py:16
+msgid "男性"
+msgstr ""
+
+#: users/models.py:17
+msgid "女性"
+msgstr ""
+
+#: users/models.py:21
+msgid "ニックネーム"
+msgstr ""
+
+#: users/models.py:21
+msgid "プロフィールを設定してください。"
+msgstr ""
+
+#: users/models.py:22
+msgid "母語"
+msgstr ""
+
+#: users/models.py:23
+msgid "学習言語"
+msgstr ""
+
+#: users/models.py:24
+msgid "性別"
+msgstr ""
+
+#: users/models.py:25
+msgid "年齢"
+msgstr ""
+
+#: users/models.py:26
+msgid "自己紹介"
+msgstr ""
+
+#: users/models.py:27
+msgid "プロフィール写真"
+msgstr ""
+
+#~ msgid "Hello"
+#~ msgstr "こんにちは。"
