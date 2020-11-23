@@ -18,7 +18,7 @@
                <form id="ajax-add-post" action="{% url 'diary:ajax_post_add' %}" method="POST" >
                  {% csrf_token %}
                    <!-- 日記本文 -->
-                   <textarea class="form-control" rows="8" id="id_content" required>日記を書こう！</textarea>
+                   <textarea class="form-control" rows="8" id="id_content" required>{% trans "日記を書こう!" %}</textarea>
                    <!--ファイル選択-->
                     <div class="custom-file mt-3 mb-1">
                      <input  type="file" accept="image/*" id="input_image1" >
@@ -32,7 +32,7 @@
                     <!--ボタンブロック-->
                   <div class="form-group row">
                       <div class="col-sm-12">
-                          <button type="submit" class="btn btn-primary btn-block">投稿</button>
+                          <button type="submit" class="btn btn-primary btn-block">{% trans "投稿" %}</button>
                       </div>
                   </div>
                   <!--/ボタンブロック-->
@@ -374,6 +374,9 @@ const card_add = p1+p2+p3+p4+p5+p6+p7;
 
 </script>
 
+<script type="text/javascript">
+  var ajax_post_delete_url = '{% url "diary:ajax_post_delete" %}';
+</script>
 
 
 
