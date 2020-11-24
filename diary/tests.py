@@ -8,8 +8,8 @@ class DiaryTests(TestCase):
 
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            username='reviewuser',
-            email='reviewuser@email.com',
+            username='diaryuser',
+            email='diaryuser@email.com',
             password='testpass123'
         )
 
@@ -24,7 +24,7 @@ class DiaryTests(TestCase):
         self.assertEqual(f'{self.diary.content}', 'Harry Potter')
 
     def test_dialy_list_view_for_logged_in_user(self):
-        self.client.login(email='reviewuser@email.com', password='testpass123')
+        self.client.login(email='diaryuser@email.com', password='testpass123')
         response = self.client.get(reverse('diary:diary_list'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Harry Potter')

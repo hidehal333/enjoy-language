@@ -1,6 +1,10 @@
-from django.test import SimpleTestCase
+from django.contrib.auth import get_user_model
+from django.test import SimpleTestCase, Client, TestCase
 from django.urls import reverse, resolve
 from . import views
+
+
+from diary.models import Diary
 
 #home(トップページ)
 class HomepageTests(SimpleTestCase):
@@ -103,3 +107,38 @@ class InquiryPageTests(SimpleTestCase):
             view.func.__name__,
             views.InquiryPageView.as_view().__name__
         )
+
+#プロフィールページ
+
+
+class ProfilePageTests(TestCase):
+
+    def setUp(self):
+        self.user = get_user_model().objects.create_user(
+            username='diaryuser',
+            email='diaryuser@email.com',
+            password='testpass123',
+            nickname  = 'will',
+            age = '33'
+        )
+
+        self.diary = Diary.objects.create(
+            user = self.user,
+            content='Harry Potter',
+        )
+
+
+    def test_profile_listing(self):
+        self.assertEqual(f'{self.user.username}',  'diaryuser')
+        self.assertEqual(f'{self.user.email}', 'diaryuser@email.com')
+        self.assertEqual(f'{self.user.nickname}', 'will')
+        self.assertEqual(f'{self.user.age}', '33')
+
+    def test_profile_view_for_logged_in_user(self):
+        self.client.login(email='diaryuser@email.com', password='testpass123')
+        response = self.client.get(self.user.get_absolute_url())
+        #no_response = self.client.get('/profile/12345/')
+        self.assertEqual(response.status_code, 200)
+        #self.assertEqual(no_response.status_code, 404)
+        self.assertContains(response, 'will')
+        self.assertTemplateUsed(response, 'profile.html')
