@@ -17,6 +17,7 @@ django-cloudinary-storage = "*"
 requests = "*"
 beautifulsoup4 = "*"
 bs4 = "*"
+django-environ = "*"
 
 [dev-packages]
 

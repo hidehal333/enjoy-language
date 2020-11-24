@@ -16,11 +16,17 @@ from users.models import CustomUser
 from .models import Diary
 
 from itertools import chain
-
+import environ
 import requests
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 
+env=environ.Env()
+# herokuの環境かどうか
+HEROKU_ENV = env.bool('DJANGO_HEROKU_ENV', default=False)
+# herokuの環境でない時は.envファイルを読む
+if not HEROKU_ENV:
+    env.read_env('.env')
 
 #日記リスト（コメント表示）
 @login_required
@@ -230,7 +236,7 @@ def furigana(request):
     diary = get_object_or_404(Diary, id=request.POST.get('diary_id'))
 
     target_url = "https://jlp.yahooapis.jp/FuriganaService/V1/furigana"
-    api_key= "dj00aiZpPUZTeHV0c1Y3NUJnTCZzPWNvbnN1bWVyc2VjcmV0Jng9YzY-"
+    api_key = env('api_key')
 
     sentence = diary.content
 

@@ -6,8 +6,6 @@ services:
     command: gunicorn enjoy_language.wsgi -b 0.0.0.0:8000
     environment:
       - ENVIRONMENT=production
-      - SECRET_KEY=oij0o9g^=rr586g#z$$s63s2&kre&=57pn2hs*kh!cjj$$x_28z_
-      - DEBUG=0
     ports:
       - 8000:8000
     depends_on:

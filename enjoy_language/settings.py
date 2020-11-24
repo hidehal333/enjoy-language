@@ -1,7 +1,18 @@
 from pathlib import Path
 import os
+import environ
 from django.contrib.messages import constants as messages
 from django.utils.translation import ugettext_lazy as _
+
+
+env=environ.Env()
+
+# herokuの環境かどうか
+HEROKU_ENV = env.bool('DJANGO_HEROKU_ENV', default=False)
+
+# herokuの環境でない時は.envファイルを読む
+if not HEROKU_ENV:
+    env.read_env('.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,11 +20,11 @@ ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = int(os.environ.get('DEBUG', default=0))
+DEBUG = env.bool('DEBUG',default=False)
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['hidden-chamber-98460.herokuapp.com', 'localhost', '127.0.0.1']
@@ -86,12 +97,12 @@ WSGI_APPLICATION = 'enjoy_language.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432
+        'ENGINE': os.environ['DB_ENGINE'],
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASSWORD'],
+        'HOST': os.environ['DB_HOST'],
+        'PORT': os.environ['DB_PORT'],
     }
 }
 
@@ -202,7 +213,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'support-enjoylanguage@example.com'
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
